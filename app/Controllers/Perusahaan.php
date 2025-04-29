@@ -6,17 +6,20 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\LowonganModel;
 use App\Models\PenggunaModel;
+use App\Models\PerusahaanModel;
 use App\Models\LamaranModel;
 
 class Perusahaan extends BaseController
 {
     protected $lowonganModel;
     protected $penggunaModel;
+    protected $perusahaanModel;
 
     public function __construct()
     {
         $this->lowonganModel = new LowonganModel();
         $this->penggunaModel = new penggunaModel();
+        $this->perusahaanModel = new perusahaanModel();
     }
 
     public function index()
@@ -172,27 +175,6 @@ public function lihatLamaran($lowongan_id)
     return view('Perusahaan/lamaran', $data);
 }
 
-public function profil()
-{
-    // Pastikan hanya perusahaan yang dapat mengakses
-    if (session()->get('peran') !== 'perusahaan') {
-        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk perusahaan.');
-    }
-
-    // Ambil username dari sesi
-    $username = session()->get('username');
-
-    // Ambil data pengguna dan perusahaan
-    $data['profil'] = $this->penggunaModel->getPenggunaWithPerusahaan($username);
-
-    // Periksa apakah data ditemukan
-    if (!$data['profil']) {
-        return redirect()->to('/perusahaan/dashboard')->with('error', 'Profil tidak ditemukan.');
-    }
-
-    return view('Perusahaan/profil', $data);
-}
-
 public function terimaLamaran($id)
 {
     // Pastikan hanya perusahaan yang dapat mengakses
@@ -239,6 +221,154 @@ public function tolakLamaran($id)
     return redirect()->to(base_url('Perusahaan/lihatLamaran/'.$id_lowongan))->with('success', 'Lamaran berhasil ditolak.');
 }
 
+public function profil()
+{
+    if (session()->get('peran') !== 'perusahaan') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk pencari kerja.');
+    }
 
+    $id_pengguna = session()->get('id');
+
+    // Ambil data profil pencari kerja
+    $data['profil'] = $this->perusahaanModel->getProfilById($id_pengguna);
+
+    return view('Perusahaan/profil', $data);
+}
+
+public function ubahProfil()
+    {
+        $penggunaModel = new PenggunaModel();
+        $perusahaanModel = new PerusahaanModel();
+        
+        // Ambil data dari form
+        $nama_perusahaan = $this->request->getPost('nama_perusahaan');
+        $username = $this->request->getPost('username');
+        $email = $this->request->getPost('email');
+        $alamat = $this->request->getPost('alamat');
+        $kontak = $this->request->getPost('kontak');
+        
+        // Ambil ID pengguna dari session
+        $session = session();
+        $id_pengguna = $session->get('id');
+        
+        if (!$id_pengguna) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+        
+        // Update tabel pengguna
+        $penggunaModel->update($id_pengguna, [
+            'username' => $username,
+            'email' => $email,
+        ]);
+        
+        // Update tabel pencari_kerja
+        $perusahaanModel->where('id_pengguna', $id_pengguna)->set([
+            'nama_perusahaan' => $nama_perusahaan,
+            'alamat' => $alamat,
+            'kontak' => $kontak,
+        ])->update();
+        
+        return redirect()->to('/Perusahaan/profil')->with('success', 'Profil berhasil diperbarui.');
+    }
+
+    public function ubahPassword()
+{
+    if (!session()->has('id')) {
+        return redirect()->to('/auth/masuk')->with('error', 'Silakan login terlebih dahulu.');
+    }
+
+    helper(['form']);
+
+    $rules = [
+        'password'      => 'required|min_length[6]',
+        'confpassword'  => 'required|matches[password]'
+    ];
+
+    if ($this->validate($rules)) {
+        $penggunaModel = new PenggunaModel();
+        $id = session()->get('id');
+
+        $data = [
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
+        ];
+
+        // Update password
+        $penggunaModel->update($id, $data);
+
+        return redirect()->to('/Perusahaan/profil')->with('success', 'Password berhasil diperbarui.');
+    } else {
+        return redirect()->to('/Perusahaan/profil')->with('error', 'Gagal memperbarui password. Pastikan isian benar.');
+    }
+}
+
+public function ubahFotoProfil()
+{
+    if (!session()->has('id')) {
+        return redirect()->to('/auth/masuk')->with('error', 'Silakan login terlebih dahulu.');
+    }
+
+    $penggunaModel = new PenggunaModel();
+    $id = session()->get('id');
+
+    $validationRule = [
+        'foto' => [
+            'rules' => 'uploaded[foto]|max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+            'errors' => [
+                'uploaded' => 'Harap pilih gambar.',
+                'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+                'is_image' => 'File harus berupa gambar.',
+                'mime_in' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            ],
+        ],
+    ];
+
+    if (!$this->validate($validationRule)) {
+        return redirect()->back()->with('error', $this->validator->listErrors());
+    }
+
+    $file = $this->request->getFile('foto');
+
+    if ($file->isValid() && !$file->hasMoved()) {
+        $newName = $file->getRandomName();
+        $uploadPath = FCPATH . 'uploads/profil/';
+
+        // Pastikan folder ada
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0775, true);
+        }
+
+        // Pindahkan file ke folder tujuan
+        if ($file->move($uploadPath, $newName)) {
+            $filePath = $uploadPath . $newName;
+
+            // Resize & crop otomatis ke 1:1 (500x500)
+            \Config\Services::image()
+                ->withFile($filePath)
+                ->fit(500, 500, 'center')
+                ->save($filePath);
+
+            // Ambil data pengguna untuk cek foto lama
+            $user = $penggunaModel->find($id);
+            $oldFoto = $user['foto'] ?? 'default.png'; // Default jika tidak ada data
+
+            // Hapus foto lama jika bukan default.png
+            if ($oldFoto !== 'default.png' && file_exists($uploadPath . $oldFoto)) {
+                unlink($uploadPath . $oldFoto);
+            }
+
+            // Simpan nama foto baru ke database
+            $penggunaModel->update($id, ['foto' => $newName]);
+
+            // Perbarui sesi
+            session()->set('foto', $newName);
+
+            return redirect()->back()->with('success', 'Foto profil berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Gagal memindahkan file ke direktori.');
+        }
+    }
+
+    return redirect()->back()->with('error', 'Gagal mengunggah foto.');
+}
 
 }

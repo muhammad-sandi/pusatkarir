@@ -28,6 +28,16 @@ class Home extends BaseController
         return view('Publik/home', $data);
     }
 
+    public function semuaLowongan(){
+        $data['lowongan'] = $this->lowonganModel->getLowonganByPerusahaanAll();
+        return view('Publik/semualowongan', $data);
+    }
+
+    public function lowonganMagang(){
+        $data['lowonganmagang'] = $this->lowonganModel->getLowonganMagangByPerusahaanAll();
+        return view('Publik/lowonganmagang', $data);
+    }
+
     public function detailLowongan($id)
     {
     $lowonganModel = new LowonganModel();

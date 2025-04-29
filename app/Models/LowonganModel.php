@@ -16,16 +16,42 @@ class LowonganModel extends Model
 
     public function getLowonganByPerusahaan()
     {
-        return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak')
+        return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak, pengguna.foto')
                     ->join('perusahaan', 'lowongan.id_perusahaan = perusahaan.id')
+                    ->join('pengguna', 'perusahaan.id_pengguna = pengguna.id')
+                    ->orderBy('lowongan.tanggal_dipasang', 'DESC')
+                    ->limit(6)
                     ->findAll();
     }
+    
 
     public function getLowonganMagangByPerusahaan()
     {
-        return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak')
+    return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak, pengguna.foto')
+                ->join('perusahaan', 'lowongan.id_perusahaan = perusahaan.id')
+                ->join('pengguna', 'perusahaan.id_pengguna = pengguna.id')
+                ->where('tipe_pekerjaan', 'Magang')
+                ->orderBy('lowongan.tanggal_dipasang', 'DESC')
+                ->limit(6)
+                ->findAll();
+    }
+
+    public function getLowonganByPerusahaanAll()
+    {
+        return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak, pengguna.foto')
                     ->join('perusahaan', 'lowongan.id_perusahaan = perusahaan.id')
+                    ->join('pengguna', 'perusahaan.id_pengguna = pengguna.id')
+                    ->orderBy('lowongan.tanggal_dipasang', 'DESC')
+                    ->findAll();
+    }
+
+    public function getLowonganMagangByPerusahaanAll()
+    {
+        return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak, pengguna.foto')
+                    ->join('perusahaan', 'lowongan.id_perusahaan = perusahaan.id')
+                    ->join('pengguna', 'perusahaan.id_pengguna = pengguna.id')
                     ->where('tipe_pekerjaan', 'Magang')
+                    ->orderBy('lowongan.tanggal_dipasang', 'DESC')
                     ->findAll();
     }
 

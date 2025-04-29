@@ -17,4 +17,12 @@ class PerusahaanModel extends Model
         'industri',
         'kontak'
     ];
+
+    public function getProfilById($id_pengguna)
+    {
+        return $this->select('pengguna.id, pengguna.email, pengguna.username, pengguna.foto, perusahaan.*')
+                    ->join('pengguna', 'pengguna.id = perusahaan.id_pengguna')
+                    ->where('pengguna.id', $id_pengguna)
+                    ->first();
+    }
 }

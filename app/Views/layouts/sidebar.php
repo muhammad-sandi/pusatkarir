@@ -27,30 +27,6 @@
             <span class="nav-link-text ms-1">Data Pengguna</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/barangmasuk">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Data Barang Masuk</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/barangkeluar">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Data Barang Keluar</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/po">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Data Purchase Order</span>
-          </a>
-        </li>
       </ul>
     </div>
     <div class="sidenav-footer mx-3 ">

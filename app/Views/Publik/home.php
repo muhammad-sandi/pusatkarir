@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>DevDesk - Bootstrap Knowledge Base &amp; Help Centre Template For Tech Products</title>
+	<title>Pusat Karir - Beranda</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -159,7 +159,7 @@
 						<a class="item-link" href="<?= base_url('home/detaillowongan/'.$tersedia['id']) ?>">
 							<!-- Logo dan Nama Perusahaan -->
 							<div class="d-flex align-items-center mb-3">
-								<img src="https://png.pngtree.com/png-clipart/20220919/original/pngtree-letter-s-and-n-company-logo-png-image_8624357.png"
+								<img src="<?= base_url('uploads/profil/' . $tersedia['foto']) ?>"
 									alt="<?= $tersedia['nama_perusahaan'] ?>" class="me-3 rounded-circle"
 									style="margin-top: -15px; width: 50px; height: 50px; object-fit: cover;">
 								<span class="item-heading"><?= $tersedia['nama_perusahaan'] ?> -
@@ -185,9 +185,18 @@
 				<?php } ?>
 				<?php endif; ?>
 
-
-
+				<!-- Tombol Lihat Semua -->
+				<div class="text-end mt-4">
+					<a href="<?= base_url('home/semualowongan') ?>"
+						class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
+						<span>Lihat Semua</span>
+						<span class="d-inline-flex align-items-center">
+							<i class="fas fa-arrow-right"></i>
+						</span>
+					</a>
+				</div>
 			</div>
+
 			<!--//help-featured-articles-section-->
 		</div>
 		<!--//container-->
@@ -208,7 +217,7 @@
 						<a class="item-link" href="<?= base_url('home/detaillowongan/'.$magang['id']) ?>">
 							<!-- Logo dan Nama Perusahaan -->
 							<div class="d-flex align-items-center mb-3">
-								<img src="https://png.pngtree.com/png-clipart/20220919/original/pngtree-letter-s-and-n-company-logo-png-image_8624357.png"
+								<img src="<?= base_url('uploads/profil/' . $magang['foto']) ?>"
 									alt="<?= $magang['nama_perusahaan'] ?>" class="me-3 rounded-circle"
 									style="margin-top: -15px; width: 50px; height: 50px; object-fit: cover;">
 								<span class="item-heading"><?= $magang['nama_perusahaan'] ?> -
@@ -220,9 +229,8 @@
                     		</h3> -->
 							<!-- Deskripsi dan Tanggal -->
 							<div class="item-desc">
-								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>"
-									alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
-									style="max-width: 100%; height: auto;">
+								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>" alt="Poster Lowongan"
+									class="img-fluid rounded-4 mb-4" style="max-width: 100%; height: auto;">
 
 								<span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
 								<?= date('d F Y', strtotime($magang['tanggal_dipasang'])) ?> -
@@ -234,7 +242,19 @@
 				<?php } ?>
 				<?php endif; ?>
 
+				<!-- Tombol Lihat Semua -->
+				<div class="text-end mt-4">
+					<a href="<?= base_url('home/lowonganmagang') ?>"
+						class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
+						<span>Lihat Semua</span>
+						<span class="d-inline-flex align-items-center">
+							<i class="fas fa-arrow-right"></i>
+						</span>
+					</a>
+				</div>
 
+				<!-- FontAwesome buat icon, kalau belum ada -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 			</div>
 			<!--//help-featured-articles-section-->
@@ -415,7 +435,7 @@
 	<!--//help-overview-section-->
 
 
-	<section class="help-cta-section theme-section text-start text-md-center py-lg-5 mb-5">
+	<!-- <section class="help-cta-section theme-section text-start text-md-center py-lg-5 mb-5">
 		<div class="container">
 			<div class="section-inner position-relative theme-bg-dark rounded-4 p-4 p-lg-5 overflow-hidden">
 				<div class="bg-pattern-holder z-0">
@@ -439,13 +459,65 @@
 							class="btn btn-secondary">Request Demo</a>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section> -->
+	<!--//product-cta-section-->
+
+	<section class="help-cta-section theme-section text-start text-md-center py-lg-5 mb-5">
+		<div class="container">
+			<div class="section-inner position-relative theme-bg-dark rounded-4 p-4 p-lg-5 overflow-hidden">
+				<div class="bg-pattern-holder z-0">
+					<div class="bg-pattern-top"></div>
+					<div class="bg-pattern-bottom"></div>
+				</div>
+				<div class="z-1 position-relative z-wrapper">
+					<div class="section-header mb-4 mb-lg-5">
+						<h2 class="section-title text-white">Informasi Kunjungan Website</h2>
+					</div>
+					<div class="section-intro single-col-max mx-auto">
+						Berikut ini adalah statistik kunjungan website Pusat Karir FIKD.
+					</div>
+					<div class="row text-white pt-4 pt-lg-5 g-4">
+						<div class="col-6 col-md-4 col-lg-2 mx-auto">
+							<div class="border rounded-4 p-3 h-100">
+								<div class="fs-4 fw-bold">123,456</div>
+								<div class="small">Keseluruhan</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-2 mx-auto">
+							<div class="border rounded-4 p-3 h-100">
+								<div class="fs-4 fw-bold">1,234</div>
+								<div class="small">Harian</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-2 mx-auto">
+							<div class="border rounded-4 p-3 h-100">
+								<div class="fs-4 fw-bold">8,765</div>
+								<div class="small">Mingguan</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-2 mx-auto">
+							<div class="border rounded-4 p-3 h-100">
+								<div class="fs-4 fw-bold">35,678</div>
+								<div class="small">Bulanan</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 col-lg-2 mx-auto">
+							<div class="border rounded-4 p-3 h-100">
+								<div class="fs-4 fw-bold">412,345</div>
+								<div class="small">Tahunan</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!--//z-wrapper-->
 			</div>
 			<!--//section-inner-->
 		</div>
 		<!--//container-->
 	</section>
-	<!--//product-cta-section-->
+
 
 
 	<footer class="footer py-3">
