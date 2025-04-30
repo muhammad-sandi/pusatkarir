@@ -154,6 +154,18 @@
             <div class="section-header text-center mb-5">
                 <h2 class="section-title mb-3">Semua Lowongan Tersedia</h2>
             </div>
+            
+            <!-- Tombol Lihat Semua -->
+            <div class="mt-4">
+                    <a href="<?= base_url('home') ?>"
+                        class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
+                        <span class="d-inline-flex align-items-center">
+                            <i class="fas fa-arrow-left"></i>
+                        </span>
+                        <span>Kembali</span>
+                    </a>
+                </div>
+
             <div class="row align-content-stretch">
                 <?php if (!empty($lowongan)) : ?>
                 <?php foreach ($lowongan as $tersedia) { ?>
@@ -188,16 +200,6 @@
                 <?php } ?>
                 <?php endif; ?>
 
-                <!-- Tombol Lihat Semua -->
-                <div class="mt-4">
-                    <a href="<?= base_url('home') ?>"
-                        class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
-                        <span class="d-inline-flex align-items-center">
-                            <i class="fas fa-arrow-left"></i>
-                        </span>
-                        <span>Kembali</span>
-                    </a>
-                </div>
             </div>
 
             <!--//help-featured-articles-section-->

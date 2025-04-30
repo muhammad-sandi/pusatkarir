@@ -90,6 +90,7 @@
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
+									<li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
 									<li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
 								</ul>
 								<?php else: ?>
@@ -518,7 +519,12 @@
 		<!--//container-->
 	</section>
 
-
+	<a href="https://wa.me/6281283532881"
+		class="btn btn-success btn-lg rounded-circle shadow position-fixed d-flex justify-content-center align-items-center"
+		style="width: 60px; height: 60px; bottom: 20px; right: 20px; z-index: 1050;" target="_blank"
+		aria-label="Chat via WhatsApp">
+		<i class="bi bi-whatsapp fs-3"></i>
+	</a>
 
 	<footer class="footer py-3">
 		<div class="container text-center">

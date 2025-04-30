@@ -298,4 +298,23 @@ public function ubahFotoProfil()
     return redirect()->back()->with('error', 'Gagal mengunggah foto.');
 }
 
+public function riwayatLamaran()
+{
+    if (session()->get('peran') !== 'pencari_kerja') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk pencari kerja.');
+    }
+
+    $id_pengguna = session()->get('id');
+
+    // Dapatkan data pencaker dulu
+    $profil = $this->pencariKerjaModel->getProfilById($id_pengguna);
+    $id_pencaker = $profil['id']; // misalnya ini id dari tabel pencaker
+
+    $data['profil'] = $profil;
+    $data['riwayatlamaran'] = $this->pencariKerjaModel->getRiwayatLamaran($id_pencaker);
+
+    return view('Publik/riwayatlamaran', $data);
+}
+
+
 }

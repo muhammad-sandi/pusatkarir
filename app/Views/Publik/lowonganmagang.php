@@ -154,6 +154,18 @@
             <div class="section-header text-center mb-5">
                 <h2 class="section-title mb-3">Lowongan Magang Tersedia</h2>
             </div>
+
+            <!-- Tombol Lihat Semua -->
+            <div class="mt-4">
+                <a href="<?= base_url('home') ?>"
+                    class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
+                    <span class="d-inline-flex align-items-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span>Kembali</span>
+                </a>
+            </div>
+
             <div class="row align-content-stretch">
                 <?php if (!empty($lowonganmagang)) : ?>
                 <?php foreach ($lowonganmagang as $magang) { ?>
@@ -174,9 +186,8 @@
                     		</h3> -->
                             <!-- Deskripsi dan Tanggal -->
                             <div class="item-desc">
-                                <img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>"
-                                    alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
-                                    style="max-width: 100%; height: auto;">
+                                <img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>" alt="Poster Lowongan"
+                                    class="img-fluid rounded-4 mb-4" style="max-width: 100%; height: auto;">
 
                                 <span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
                                 <?= date('d F Y', strtotime($magang['tanggal_dipasang'])) ?> -
@@ -188,16 +199,6 @@
                 <?php } ?>
                 <?php endif; ?>
 
-                <!-- Tombol Lihat Semua -->
-                <div class="mt-4">
-                    <a href="<?= base_url('home') ?>"
-                        class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
-                        <span class="d-inline-flex align-items-center">
-                            <i class="fas fa-arrow-left"></i>
-                        </span>
-                        <span>Kembali</span>
-                    </a>
-                </div>
             </div>
 
             <!--//help-featured-articles-section-->

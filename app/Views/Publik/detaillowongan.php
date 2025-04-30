@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>DevDesk - Bootstrap Knowledge Base &amp; Help Centre Template For Tech Products</title>
+	<title>Pusat Karir - Detail Lowongan</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -204,8 +204,8 @@
 							</div>
 							<?php else: ?>
 							<div class="mt-4">
-								<a href="/auth/daftar" class="btn btn-primary text-white me-2">Daftar Akun</a>
-								<p style="font-size: 14px;"><i>*Harap daftar akun untuk melanjutkan.</i></p>
+								<a href="/auth/masuk" class="btn btn-primary text-white me-2">Masuk</a>
+								<p style="font-size: 14px;"><i>*Harap masuk untuk melanjutkan.</i></p>
 							</div>
 							<?php endif; ?>
 						</div>

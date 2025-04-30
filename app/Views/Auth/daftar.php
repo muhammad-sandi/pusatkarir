@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../argon/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../argon/img/favicon.png">
     <title>
-        Argon Dashboard 2 by Creative Tim
+        Pusat Karir - Daftar
     </title>
     <!--     Fonts and icons     -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -56,7 +56,8 @@
                                         </div>
                                         <div class="mb-2">
                                             <label for="InputForName" class="form-label">Username</label>
-                                            <input type="text" name="username" class="form-control" id="InputForUsername">
+                                            <input type="text" name="username" class="form-control"
+                                                id="InputForUsername">
                                         </div>
                                         <div class="mb-2 position-relative">
                                             <label for="InputForPassword" class="form-label">Password</label>
