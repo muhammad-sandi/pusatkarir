@@ -86,7 +86,8 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="data-form" method="post" action="<?= base_url('Perusahaan/ubahFotoProfil') ?>"
+                                    <form id="data-form" method="post"
+                                        action="<?= base_url('Perusahaan/ubahFotoProfil') ?>"
                                         enctype="multipart/form-data">
                                         <div class="form-floating mb-3">
 
@@ -128,8 +129,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="text-danger nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                                        href="<?= base_url('Auth/keluar')?>" role="tab"
-                                        aria-selected="false">
+                                        href="<?= base_url('Auth/keluar')?>" role="tab" aria-selected="false">
                                         <i class="fa fa-sign-out"></i>
                                         <span class="ms-2">Keluar</span>
                                     </a>
@@ -170,6 +170,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label class="form-control-label">Industri</label>
+                                            <input class="form-control" type="text" name="industri"
+                                                value="<?= $profil['industri'] ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label class="form-control-label">Email</label>
                                             <input class="form-control" type="email" name="email"
                                                 value="<?= $profil['email'] ?>" required>
@@ -189,6 +196,14 @@
                                                 value="<?= $profil['kontak'] ?>" required>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Deskripsi Perusahaan</label>
+                                            <textarea class="form-control" name="deskripsi_perusahaan" rows="5"
+                                                required><?= isset($profil['deskripsi_perusahaan']) ? $profil['deskripsi_perusahaan'] : '' ?></textarea>
+                                        </div>
+                                    </div>
+
                                 </div>
                     </form>
 

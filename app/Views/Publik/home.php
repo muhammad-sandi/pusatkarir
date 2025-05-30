@@ -43,7 +43,7 @@
 				<nav class="navbar navbar-expand-lg">
 					<div class="site-logo me-3">
 						<a class="navbar-brand" href=<?= base_url('home')?>>
-							<img class="logo-icon" src=<?= base_url("assets/images/site-logo.svg")?> alt="logo">
+							<img class="logo" src=<?= base_url("assets/images/logo.png")?> alt="Logo">
 						</a>
 					</div>
 					<!--//site-logo-->
@@ -112,7 +112,7 @@
 
 		<div class="page-heading-holder">
 			<div class="container text-center">
-				<h1 class="page-heading mb-3">Selamat Datang di Pusat Karir FIKD</h1>
+				<h1 class="page-heading mb-3">Selamat Datang di Pusat Karir Unsurya</h1>
 
 				<div class="page-heading-sub single-col-max mx-auto">
 					<div class="help-search-intro">
@@ -166,19 +166,34 @@
 								<span class="item-heading"><?= $tersedia['nama_perusahaan'] ?> -
 									<?= $tersedia['judul'] ?></span>
 							</div>
-							<!-- Judul Lowongan -->
-							<!-- <h3 class="item-heading">
-                       		<?= $tersedia['judul'] ?>
-                    		</h3> -->
 							<!-- Deskripsi dan Tanggal -->
-							<div class="item-desc">
+							<div class="item-desc mb-3">
 								<img src="<?= base_url('uploads/poster/' . $tersedia['poster']) ?>"
 									alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
 									style="max-width: 100%; height: auto;">
 
-								<span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
-								<?= date('d F Y', strtotime($tersedia['tanggal_dipasang'])) ?> -
-								<?= date('d F Y', strtotime($tersedia['tanggal_berakhir'])) ?>
+								<!-- Tanggal Pasang - Berakhir -->
+								<div class="mb-1">
+									<span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
+									<?= date('d F Y', strtotime($tersedia['tanggal_dipasang'])) ?> -
+									<?= date('d F Y', strtotime($tersedia['tanggal_berakhir'])) ?>
+								</div>
+
+								<!-- Batas Lamaran (Jumlah Dibutuhkan) -->
+								<div>
+									<span class="rate-icon me-2"><i class="fa-solid fa-users"></i></span>
+									Dibutuhkan: <strong><?= $tersedia['batas_lamaran'] ?> orang</strong>
+								</div>
+							</div>
+
+							<div class="item-desc">
+								<span
+									class="badge 
+									<?= $tersedia['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
+									($tersedia['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
+									($tersedia['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> px-3 py-1 rounded-pill">
+									<?= $tersedia['tipe_pekerjaan'] ?>
+								</span>
 							</div>
 						</a>
 					</div>
@@ -224,18 +239,33 @@
 								<span class="item-heading"><?= $magang['nama_perusahaan'] ?> -
 									<?= $magang['judul'] ?></span>
 							</div>
-							<!-- Judul Lowongan -->
-							<!-- <h3 class="item-heading">
-                       		<?= $magang['judul'] ?>
-                    		</h3> -->
 							<!-- Deskripsi dan Tanggal -->
-							<div class="item-desc">
-								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>" alt="Poster Lowongan"
-									class="img-fluid rounded-4 mb-4" style="max-width: 100%; height: auto;">
+							<div class="item-desc mb-3">
+								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>"
+									alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
+									style="max-width: 100%; height: auto;">
 
-								<span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
-								<?= date('d F Y', strtotime($magang['tanggal_dipasang'])) ?> -
-								<?= date('d F Y', strtotime($magang['tanggal_berakhir'])) ?>
+								<!-- Tanggal Pasang - Berakhir -->
+								<div class="mb-1">
+									<span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
+									<?= date('d F Y', strtotime($magang['tanggal_dipasang'])) ?> -
+									<?= date('d F Y', strtotime($magang['tanggal_berakhir'])) ?>
+								</div>
+
+								<!-- Batas Lamaran (Jumlah Dibutuhkan) -->
+								<div>
+									<span class="rate-icon me-2"><i class="fa-solid fa-users"></i></span>
+									Dibutuhkan: <strong><?= $magang['batas_lamaran'] ?> orang</strong>
+								</div>
+							</div>
+							<div class="item-desc">
+								<span
+									class="badge 
+									<?= $magang['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
+									($magang['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
+									($magang['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> px-3 py-1 rounded-pill">
+									<?= $magang['tipe_pekerjaan'] ?>
+								</span>
 							</div>
 						</a>
 					</div>

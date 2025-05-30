@@ -22,11 +22,34 @@
           </div>
         </div>
         <ul class="navbar-nav  justify-content-end">
-          <li class="nav-item d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="true">
               <i class="fa fa-user me-sm-1"></i>
               <span class="d-sm-inline d-none"><?= ucfirst(session()->get('username')); ?></span>
             </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a class="dropdown-item border-radius-md" href="<?= base_url('Perusahaan/profil')?>">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        Profil
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+                <a class="dropdown-item border-radius-md" href="<?= base_url('Auth/keluar')?>">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm text-danger font-weight-normal mb-1">
+                        Keluar
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
@@ -41,25 +64,6 @@
             <a href="javascript:;" class="nav-link text-white p-0">
               <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
             </a>
-          </li>
-          <li class="nav-item dropdown pe-2 d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <i class="fa fa-sign-out cursor-pointer"></i>
-            </a>
-            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a class="dropdown-item border-radius-md" href="<?= base_url('Auth/keluar')?>">
-                  <div class="d-flex py-1">
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="text-sm text-danger font-weight-normal mb-1">
-                        Keluar
-                      </h6>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </div>

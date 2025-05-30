@@ -31,10 +31,30 @@ class Admin extends BaseController
         $penggunaModel = new PenggunaModel();
 
         // Ambil data pengguna
-        $data['pengguna'] = $penggunaModel->findAll();
+        $data['pengguna'] = $penggunaModel->paginate(10, 'pengguna'); // 10 data per halaman
+        $data['pager'] = $penggunaModel->pager;
+
 
         // Kirim data ke view
         return view('Admin/pengguna', $data);
+    }
+
+    public function perusahaan()
+    {
+        // Pastikan hanya admin yang dapat mengakses
+        if (session()->get('peran') !== 'admin') {
+            return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk admin.');
+        }
+
+        // Load model
+        $perusahaanModel = new PerusahaanModel();
+
+        // Ambil data pengguna
+        $data['perusahaan'] = $perusahaanModel->paginate(10, 'perusahaan'); // 10 data per halaman
+        $data['pager'] = $perusahaanModel->pager;
+
+        // Kirim data ke view
+        return view('Admin/perusahaan', $data);
     }
 
     public function tambahPengguna()

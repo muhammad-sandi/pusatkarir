@@ -23,11 +23,35 @@
                     </div>
                 </div>
                 <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white font-weight-bold px-0" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="true">
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none"><?= ucfirst(session()->get('username')); ?></span>
                         </a>
+                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                            aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <a class="dropdown-item border-radius-md" href="<?= base_url('Perusahaan/profil')?>">
+                                    <div class="d-flex py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="text-sm font-weight-normal mb-1">
+                                                Profil
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item border-radius-md" href="<?= base_url('Auth/keluar')?>">
+                                    <div class="d-flex py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="text-sm text-danger font-weight-normal mb-1">
+                                                Keluar
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
@@ -43,26 +67,6 @@
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-sign-out cursor-pointer"></i>
-                        </a>
-                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                            aria-labelledby="dropdownMenuButton">
-                            <li>
-                                <a class="dropdown-item border-radius-md" href="<?= base_url('Auth/keluar')?>">
-                                    <div class="d-flex py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm text-danger font-weight-normal mb-1">
-                                                Keluar
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -74,8 +78,8 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex bd-highlight">
                         <h6 class="flex-grow-1 bd-highlight">Data Lowongan </h6>
-                        <a href="<?= base_url('Lowongan/exportExcel') ?>" class="btn btn-success bd-highlight">Export
-                            Excel</a>
+                        <!-- <a href="<?= base_url('Lowongan/exportExcel') ?>" class="btn btn-success bd-highlight">Export
+                            Excel</a> -->
                         <button type="button" class="btn btn-primary ms-2 bd-highlight" data-bs-toggle="modal"
                             data-bs-target="#tambah-data">Tambah Lowongan Baru</button>
                     </div>
@@ -171,8 +175,8 @@
                                         </td>
 
                                         <td class="align-middle">
-                                            <a href="<?= base_url('Perusahaan/lihatLamaran/'.$low['id']) ?>" class="text-success font-weight-bold text-xs"
-                                                target="_blank">
+                                            <a href="<?= base_url('Perusahaan/lihatLamaran/'.$low['id']) ?>"
+                                                class="text-success font-weight-bold text-xs" target="_blank">
                                                 <i class="fa fa-eye"></i>
                                             </a>
 
@@ -194,7 +198,7 @@
                                     <?php else : ?>
                                     <tr>
                                         <td colspan="6" class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Belum ada data pengguna.</p>
+                                            <p class="text-xs font-weight-bold mb-0">Belum ada data.</p>
                                         </td>
                                     </tr>
                                     <?php endif; ?>
@@ -238,10 +242,20 @@
                                 <label for="gaji">Gaji</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="tipe_pekerjaan" name="tipe_pekerjaan"
-                                    required>
+                                <select class="form-select" id="tipe_pekerjaan" name="tipe_pekerjaan" required>
+                                    <option value="" disabled selected>Pilih Tipe Pekerjaan</option>
+                                    <option value="Pelatihan"
+                                        <?= ($tipe_pekerjaan ?? '') === 'Pelatihan' ? 'selected' : '' ?>>Pelatihan
+                                    </option>
+                                    <option value="Magang"
+                                        <?= ($tipe_pekerjaan ?? '') === 'Magang' ? 'selected' : '' ?>>Magang</option>
+                                    <option value="Penuh Waktu"
+                                        <?= ($tipe_pekerjaan ?? '') === 'Penuh Waktu' ? 'selected' : '' ?>>Penuh Waktu
+                                    </option>
+                                </select>
                                 <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
                             </div>
+
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="lokasi" name="lokasi" required>
                                 <label for="lokasi">Lokasi</label>

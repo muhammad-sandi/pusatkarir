@@ -144,6 +144,7 @@
                                     <?php endif; ?>
                                 </tbody>
                             </table>
+                            <?= $pager->links('pengguna', 'pagination') ?>
                         </div>
                     </div>
                 </div>

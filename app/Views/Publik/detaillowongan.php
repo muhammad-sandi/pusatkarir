@@ -151,14 +151,18 @@
 					<div class="item d-flex col-12 flex-column flex-lg-row mb-4">
 						<!-- Gambar Poster -->
 						<div class="me-lg-4 mb-4 mb-lg-0 d-flex flex-column align-items-center">
-							<img src="<?= base_url('uploads/poster/' . $lowongan['poster']) ?>"
-								alt="Poster Lowongan" class="img-fluid rounded-4 shadow" style="max-width: 300px;">
+							<img src="<?= base_url('uploads/poster/' . $lowongan['poster']) ?>" alt="Poster Lowongan"
+								class="img-fluid rounded-4 shadow" style="max-width: 300px;">
 							<!-- Tambahan: Informasi Perusahaan atau Badge -->
 							<div class="text-center mt-3">
 								<p class="mb-1"><strong><?= $lowongan['nama_perusahaan']?></strong></p>
 								<p class="small text-muted"><?= $lowongan['deskripsi_perusahaan']?></p>
-								<div class="badge bg-primary text-white py-2 px-3 mt-2">
-									<?= $lowongan['tipe_pekerjaan']?></div>
+								<div class="badge text-white py-2 px-3 mt-2
+									<?= $lowongan['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
+									($lowongan['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
+									($lowongan['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> py-2 px-3 mt-2">
+									<?= $lowongan['tipe_pekerjaan'] ?>
+								</div>
 							</div>
 						</div>
 
@@ -168,7 +172,7 @@
 							<div class="d-flex align-items-center mb-3">
 								<div class="me-3">
 									<!-- Gambar Logo Perusahaan dengan border-radius untuk membulat -->
-									<img src="https://png.pngtree.com/png-clipart/20220919/original/pngtree-letter-s-and-n-company-logo-png-image_8624357.png"
+									<img src="<?= base_url('uploads/profil/' . $lowongan['foto']) ?>"
 										alt="Logo Perusahaan" class="img-fluid"
 										style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-top: -25px;">
 								</div>

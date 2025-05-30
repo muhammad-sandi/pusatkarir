@@ -243,9 +243,11 @@ public function ubahProfil()
         // Ambil data dari form
         $nama_perusahaan = $this->request->getPost('nama_perusahaan');
         $username = $this->request->getPost('username');
+        $deskripsi_perusahaan = $this->request->getPost('deskripsi_perusahaan');
         $email = $this->request->getPost('email');
         $alamat = $this->request->getPost('alamat');
         $kontak = $this->request->getPost('kontak');
+        $industri = $this->request->getPost('industri');
         
         // Ambil ID pengguna dari session
         $session = session();
@@ -264,8 +266,11 @@ public function ubahProfil()
         // Update tabel pencari_kerja
         $perusahaanModel->where('id_pengguna', $id_pengguna)->set([
             'nama_perusahaan' => $nama_perusahaan,
+            'deskripsi_perusahaan' => $deskripsi_perusahaan,
             'alamat' => $alamat,
             'kontak' => $kontak,
+            'industri' => $industri,
+            
         ])->update();
         
         return redirect()->to('/Perusahaan/profil')->with('success', 'Profil berhasil diperbarui.');

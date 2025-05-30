@@ -36,79 +36,80 @@
         <!--//page-header-bg-pattern-holder-->
 
         <header class="header">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg">
-                    <div class="site-logo me-3">
-                        <a class="navbar-brand" href=<?= base_url('home')?>>
-                            <img class="logo-icon" src=<?= base_url("assets/images/site-logo.svg")?> alt="logo">
-                        </a>
-                    </div>
-                    <!--//site-logo-->
+			<div class="container">
+				<nav class="navbar navbar-expand-lg">
+					<div class="site-logo me-3">
+						<a class="navbar-brand" href=<?= base_url('home')?>>
+							<img class="logo" src=<?= base_url("assets/images/logo.png")?> alt="Logo">
+						</a>
+					</div>
+					<!--//site-logo-->
 
 
-                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span> </span>
-                        <span> </span>
-                        <span> </span>
-                    </button>
+					<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span> </span>
+						<span> </span>
+						<span> </span>
+					</button>
 
-                    <div class="collapse navbar-collapse ms-auto" id="navigation">
+					<div class="collapse navbar-collapse ms-auto" id="navigation">
 
-                        <ul class="navbar-nav ms-auto align-items-lg-center">
-                            <li class="nav-item me-lg-4">
-                                <a class="nav-link" href=<?= base_url('home')?>>Home</a>
-                            </li>
-                            <li class="nav-item dropdown me-lg-4">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">Categories</a>
-                                <ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-                                    <li><a class="dropdown-item" href="help-category.html">Get Started</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Product Guide</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Integrations</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Collaboration</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Billing &amp;
-                                            Subscription</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Developers &amp; APIs</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Support &amp;
-                                            Troubleshooting</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Best Practices</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Resources</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown pt-3 pt-lg-0">
-                                <?php if (session()->get('username')): ?>
-                                <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
-                                        class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/user/profil">Profil</a></li>
-                                    <li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
-                                </ul>
-                                <?php else: ?>
-                                <a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
-                                <?php endif; ?>
-                            </li>
+						<ul class="navbar-nav ms-auto align-items-lg-center">
+							<li class="nav-item me-lg-4">
+								<a class="nav-link" href=<?= base_url('home')?>>Home</a>
+							</li>
+							<li class="nav-item dropdown me-lg-4">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+									aria-expanded="false">Categories</a>
+								<ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
+									<li><a class="dropdown-item" href="help-category.html">Get Started</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Product Guide</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Integrations</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Collaboration</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Billing &amp;
+											Subscription</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Developers &amp; APIs</a>
+									</li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Support &amp;
+											Troubleshooting</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Best Practices</a></li>
+									<li><a class="dropdown-item" href="help-category-alt.html">Resources</a></li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown pt-3 pt-lg-0">
+								<?php if (session()->get('username')): ?>
+								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
+										class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
+									<li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
+									<li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
+								</ul>
+								<?php else: ?>
+								<a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
+								<?php endif; ?>
+							</li>
 
 
-                        </ul>
-                        <!--//navbar-nav-->
+						</ul>
+						<!--//navbar-nav-->
 
-                    </div>
-                </nav>
-            </div>
-            <!--//container-->
+					</div>
+				</nav>
+			</div>
+			<!--//container-->
 
-        </header>
+		</header>
         <!--//header-->
 
         <div class="page-heading-holder">
             <div class="container text-center">
-                <h1 class="page-heading mb-3">Selamat Datang di Pusat Karir FIKD</h1>
+                <h1 class="page-heading mb-3">Selamat Datang di Pusat Karir Unsurya</h1>
 
                 <div class="page-heading-sub single-col-max mx-auto">
                     <div class="help-search-intro">
@@ -148,6 +149,18 @@
             <div class="section-header text-center mb-5">
                 <h2 class="section-title mb-3">Hasil pencarian untuk: <?= esc($keyword) ?></h2>
             </div>
+
+            <!-- Tombol Lihat Semua -->
+            <div class="mt-4">
+                <a href="<?= base_url('home') ?>"
+                    class="btn btn-primary rounded-4 d-inline-flex align-items-center gap-2">
+                    <span class="d-inline-flex align-items-center">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span>Kembali</span>
+                </a>
+            </div>
+            
             <div class="row align-content-stretch">
                 <?php if (!empty($lowongan)) : ?>
                 <?php foreach ($lowongan as $tersedia) { ?>
@@ -163,18 +176,34 @@
                                     <?= $tersedia['judul'] ?></span>
                             </div>
                             <!-- Judul Lowongan -->
-                            <!-- <h3 class="item-heading">
-                       		<?= $tersedia['judul'] ?>
-                    		</h3> -->
                             <!-- Deskripsi dan Tanggal -->
-                            <div class="item-desc">
+                            <div class="item-desc mb-3">
                                 <img src="<?= base_url('uploads/poster/' . $tersedia['poster']) ?>"
                                     alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
                                     style="max-width: 100%; height: auto;">
 
-                                <span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
-                                <?= date('d F Y', strtotime($tersedia['tanggal_dipasang'])) ?> -
-                                <?= date('d F Y', strtotime($tersedia['tanggal_berakhir'])) ?>
+                                <!-- Tanggal Pasang - Berakhir -->
+                                <div class="mb-1">
+                                    <span class="rate-icon me-2"><i class="fa-solid fa-calendar"></i></span>
+                                    <?= date('d F Y', strtotime($tersedia['tanggal_dipasang'])) ?> -
+                                    <?= date('d F Y', strtotime($tersedia['tanggal_berakhir'])) ?>
+                                </div>
+
+                                <!-- Batas Lamaran (Jumlah Dibutuhkan) -->
+                                <div>
+                                    <span class="rate-icon me-2"><i class="fa-solid fa-users"></i></span>
+                                    Dibutuhkan: <strong><?= $tersedia['batas_lamaran'] ?> orang</strong>
+                                </div>
+                            </div>
+
+                            <div class="item-desc">
+                                <span
+                                    class="badge 
+									<?= $tersedia['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
+									($tersedia['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
+									($tersedia['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> px-3 py-1 rounded-pill">
+                                    <?= $tersedia['tipe_pekerjaan'] ?>
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -196,16 +225,16 @@
     <!--//help-featured-section-->
 
     <footer class="footer py-3">
-		<div class="container text-center">
-			<!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-			<small class="copyright">Designed with <span class="sr-only">love</span><i class="bi bi-heart-fill"
-					style="color:#DE5547"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com"
-					target="_blank">Xiaoying Riley</a> for developers</small>
+        <div class="container text-center">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="bi bi-heart-fill"
+                    style="color:#DE5547"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com"
+                    target="_blank">Xiaoying Riley</a> for developers</small>
 
-		</div>
-		<!--//container-->
-	</footer>
-	<!--//footer-->
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
 
     <!-- Javascript -->
     <script src=<?= base_url("assets/plugins/popper.min.js")?>></script>
