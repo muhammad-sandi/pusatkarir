@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>DevDesk - Bootstrap Knowledge Base &amp; Help Centre Template For Tech Products</title>
+    <title>Pusat Karir - Lowongan Magang</title>
 
     <!-- Meta -->
     <meta charset="utf-8">

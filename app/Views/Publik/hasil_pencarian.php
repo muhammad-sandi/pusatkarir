@@ -1,5 +1,5 @@
 <head>
-    <title>DevDesk - Bootstrap Knowledge Base &amp; Help Centre Template For Tech Products</title>
+    <title>Pusat Karir - Pencarian</title>
 
     <!-- Meta -->
     <meta charset="utf-8">

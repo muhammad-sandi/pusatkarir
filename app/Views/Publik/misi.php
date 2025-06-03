@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Pusat Karir - Beranda</title>
+    <title>Pusat Karir - Misi</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
