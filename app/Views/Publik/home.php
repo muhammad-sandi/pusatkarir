@@ -61,24 +61,15 @@
 
 						<ul class="navbar-nav ms-auto align-items-lg-center">
 							<li class="nav-item me-lg-4">
-								<a class="nav-link" href=<?= base_url('home')?>>Home</a>
+								<a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
 							</li>
 							<li class="nav-item dropdown me-lg-4">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-expanded="false">Categories</a>
+									aria-expanded="false">Profil</a>
 								<ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-									<li><a class="dropdown-item" href="help-category.html">Get Started</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Product Guide</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Integrations</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Collaboration</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Billing &amp;
-											Subscription</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Developers &amp; APIs</a>
-									</li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Support &amp;
-											Troubleshooting</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Best Practices</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Resources</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
+
 								</ul>
 							</li>
 							<li class="nav-item dropdown pt-3 pt-lg-0">
@@ -241,9 +232,8 @@
 							</div>
 							<!-- Deskripsi dan Tanggal -->
 							<div class="item-desc mb-3">
-								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>"
-									alt="Poster Lowongan" class="img-fluid rounded-4 mb-4"
-									style="max-width: 100%; height: auto;">
+								<img src="<?= base_url('uploads/poster/' . $magang['poster']) ?>" alt="Poster Lowongan"
+									class="img-fluid rounded-4 mb-4" style="max-width: 100%; height: auto;">
 
 								<!-- Tanggal Pasang - Berakhir -->
 								<div class="mb-1">
@@ -556,16 +546,62 @@
 		<i class="bi bi-whatsapp fs-3"></i>
 	</a>
 
-	<footer class="footer py-3">
-		<div class="container text-center">
-			<!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-			<small class="copyright">Designed with <span class="sr-only">love</span><i class="bi bi-heart-fill"
-					style="color:#DE5547"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com"
-					target="_blank">Xiaoying Riley</a> for developers</small>
-
+	<footer class="footer text-white py-5 position-relative overflow-hidden">
+		<!-- Background pattern -->
+		<div class="page-header-bg-pattern-holder position-absolute top-0 start-0 w-100 h-100 z-0">
+			<div class="bg-pattern-top"></div>
+			<div class="bg-pattern-bottom"></div>
 		</div>
-		<!--//container-->
+
+		<!-- Konten Footer -->
+		<div class="container position-relative z-1">
+			<div class="row">
+				<!-- Kolom 1: Logo & Kontak -->
+				<div class="col-md-4 mb-4">
+					<img src="<?= base_url("assets/images/logo.png") ?>" alt="Logo UNSURYA" style="height: 60px;">
+					<h5 class="mt-3 fw-bold text-white">Universitas Dirgantara Marsekal<br>Suryadarma</h5>
+					<ul class="list-unstyled mt-3">
+						<li class="mb-2"><i class="bi bi-telephone-fill me-2 text-white"></i>(021) 8093475</li>
+						<li class="mb-2"><i class="bi bi-telephone me-2 text-white"></i>(021) 8009246</li>
+						<li class="mb-2"><i class="bi bi-whatsapp me-2 text-white"></i>082299205348</li>
+						<li class="mb-2"><i class="bi bi-envelope-fill me-2 text-white"></i>sekretariat@unsurya.ac.id
+						</li>
+					</ul>
+				</div>
+
+				<!-- Kolom 2: Alamat -->
+				<div class="col-md-5 mb-4">
+					<h5 class="fw-bold text-white">Alamat</h5>
+					<p class="mt-3 text-white">
+						Jl. Halim Perdana Kusuma No.1, RT.1/RW.9, Halim Perdana Kusumah, Kec. Makasar, Kota Jakarta
+						Timur,<br>
+						Daerah Khusus Ibukota Jakarta 13610
+					</p>
+				</div>
+
+				<!-- Kolom 3: Find Us -->
+				<div class="col-md-3 mb-4">
+					<h5 class="fw-bold text-white">Find Us</h5>
+					<div class="d-flex gap-3 mt-3">
+						<a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+						<a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+						<a href="#" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+						<a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<hr class="border-top border-light mt-4">
+
+			<div class="text-center mt-3">
+				<small class="text-white">
+					&copy; <?= date('Y') ?> Universitas Dirgantara Marsekal Suryadarma. All rights reserved.
+				</small>
+			</div>
+		</div>
 	</footer>
+
+
 	<!--//footer-->
 
 	<!-- Javascript -->

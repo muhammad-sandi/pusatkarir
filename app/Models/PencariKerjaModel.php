@@ -21,7 +21,7 @@ class PencariKerjaModel extends Model
     public function getRiwayatLamaran($id_pencari_kerja)
 {
     return $this->db->table('lamaran')
-        ->select('lamaran.tanggal_lamaran, lamaran.status, perusahaan.nama_perusahaan, lowongan.judul, lowongan.tipe_pekerjaan, lowongan.lokasi')
+        ->select('lamaran.id, lamaran.tanggal_lamaran, lamaran.status, lamaran.keterangan, perusahaan.nama_perusahaan, lowongan.judul, lowongan.tipe_pekerjaan, lowongan.lokasi,')
         ->join('lowongan', 'lowongan.id = lamaran.id_lowongan')
         ->join('perusahaan', 'lowongan.id_perusahaan = perusahaan.id')
         ->where('lamaran.id_pencari_kerja', $id_pencari_kerja)

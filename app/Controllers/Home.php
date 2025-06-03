@@ -316,5 +316,42 @@ public function riwayatLamaran()
     return view('Publik/riwayatlamaran', $data);
 }
 
+public function laporanMagang()
+{
+    $laporanModel = new \App\Models\LaporanMagangModel();
+
+    $lamaranId = $this->request->getPost('id_lamaran');
+    $judul     = $this->request->getPost('judul');
+    $isi_laporan       = $this->request->getPost('isi_laporan');
+
+    // Cek apakah sudah mengisi laporan bulan ini
+    $sudahAda = $laporanModel
+        ->where('id_lamaran', $lamaranId)
+        ->where('MONTH(tanggal_submit)', date('m'))
+        ->where('YEAR(tanggal_submit)', date('Y'))
+        ->first();
+
+    if ($sudahAda) {
+        return redirect()->back()->with('error', 'Laporan untuk bulan ini sudah pernah dikirim.');
+    }
+
+    // Simpan laporan
+    $laporanModel->insert([
+        'id_lamaran'   => $lamaranId,
+        'judul'        => $judul,
+        'isi_laporan'  => $isi_laporan,
+    ]);
+
+    return redirect()->back()->with('success', 'Laporan berhasil dikirim.');
+}
+
+public function visi()
+{
+    return view('Publik/visi');
+}
+public function misi()
+{
+    return view('Publik/misi');
+}
 
 }

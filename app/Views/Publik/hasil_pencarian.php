@@ -58,24 +58,15 @@
 
 						<ul class="navbar-nav ms-auto align-items-lg-center">
 							<li class="nav-item me-lg-4">
-								<a class="nav-link" href=<?= base_url('home')?>>Home</a>
+								<a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
 							</li>
 							<li class="nav-item dropdown me-lg-4">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-expanded="false">Categories</a>
+									aria-expanded="false">Profil</a>
 								<ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-									<li><a class="dropdown-item" href="help-category.html">Get Started</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Product Guide</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Integrations</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Collaboration</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Billing &amp;
-											Subscription</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Developers &amp; APIs</a>
-									</li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Support &amp;
-											Troubleshooting</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Best Practices</a></li>
-									<li><a class="dropdown-item" href="help-category-alt.html">Resources</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
+
 								</ul>
 							</li>
 							<li class="nav-item dropdown pt-3 pt-lg-0">

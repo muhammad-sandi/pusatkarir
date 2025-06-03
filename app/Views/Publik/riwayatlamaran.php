@@ -31,7 +31,7 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href=<?= base_url("argon/css/nucleo-svg.css")?> rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- CSS Files -->
     <link id="pagestyle" href=<?= base_url("argon/css/argon-dashboard.css?v=2.0.4")?> rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -140,6 +140,27 @@
             </div>
         </div>
         <div class="container-fluid py-4">
+            <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span class="alert-text text-white">
+                    <strong>Error!</strong> <?= session()->getFlashdata('error') ?>
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="alert-text text-white">
+                    <strong>Sukses!</strong> <?= session()->getFlashdata('success') ?>
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -147,57 +168,198 @@
                             <h6>Riwayat Lamaran</h6>
                         </div>
                         <div class="card-body">
-    <div class="table-responsive">
-        <table class="table align-items-center">
-            <thead class="bg-light">
-                <tr>
-                    <th>Perusahaan</th>
-                    <th>Posisi</th>
-                    <th>Tanggal Daftar</th>
-                    <th>Tahapan Terakhir</th>
-                    <th class="text-center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($riwayatlamaran as $lamaran): ?>
-                <tr>
-                    <td><?= esc($lamaran['nama_perusahaan']) ?></td>
-                    <td><?= esc($lamaran['judul']) ?></td>
-                    <td><?= date('d F Y', strtotime($lamaran['tanggal_lamaran'])) ?></td>
-                    <td>
-                        <?php if ($lamaran['status'] == 'Ditolak'): ?>
-                        <span class="badge bg-danger-subtle text-danger">DITOLAK</span>
-                        <?php elseif ($lamaran['status'] == 'Diterima'): ?>
-                        <span class="badge bg-success-subtle text-success">DITERIMA</span>
-                        <?php elseif ($lamaran['status'] == 'Diajukan'): ?>
-                        <span class="badge bg-warning-subtle text-warning">DIAJUKAN</span>
-                        <?php endif; ?>
-                    </td>
-                    <td class="text-center">
-                        <a href="/lamaran/detail/" class="btn btn-sm btn-outline-primary">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </td>
-                </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                            <div class="table-responsive">
+                                <table class="table align-items-center">
+                                    <thead class="text-white bg-gradient-primary">
+                                        <tr>
+                                            <th>Perusahaan</th>
+                                            <th>Posisi</th>
+                                            <th>Jenis Pekerjaan</th>
+                                            <th>Tanggal Daftar</th>
+                                            <th>Status</th>
+                                            <th class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($riwayatlamaran as $lamaran): ?>
+                                        <tr>
+                                            <td><?= esc($lamaran['nama_perusahaan']) ?></td>
+                                            <td><?= esc($lamaran['judul']) ?></td>
+                                            <td>
+                                                <?php if ($lamaran['tipe_pekerjaan'] == 'Magang'): ?>
+                                                <span class="badge bg-warning-subtle text-warning">Magang</span>
+                                                <?php elseif ($lamaran['tipe_pekerjaan'] == 'Penuh Waktu'): ?>
+                                                <span class="badge bg-success-subtle text-success">Penuh Waktu</span>
+                                                <?php elseif ($lamaran['tipe_pekerjaan'] == 'Pelatihan'): ?>
+                                                <span class="badge bg-warning-subtle text-warning">Pelatihan</span>
+                                                <?php endif; ?>
+                                            </td>
 
-        <?php if (empty($riwayatlamaran)): ?>
-        <p class="text-muted text-center mt-3">Belum ada lamaran yang diajukan.</p>
-        <?php endif; ?>
-    </div>
-</div>
+                                            <td><?= date('d F Y', strtotime($lamaran['tanggal_lamaran'])) ?></td>
+                                            <td>
+                                                <?php if ($lamaran['status'] == 'Ditolak'): ?>
+                                                <span class="badge bg-danger-subtle text-danger">DITOLAK</span>
+                                                <?php elseif ($lamaran['status'] == 'Diterima'): ?>
+                                                <span class="badge bg-success-subtle text-success">DITERIMA</span>
+                                                <?php elseif ($lamaran['status'] == 'Diajukan'): ?>
+                                                <span class="badge bg-warning-subtle text-warning">DIAJUKAN</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="#" class="btn btn-sm btn-outline-primary"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modal-detail<?= $lamaran['id']?>">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <?php if (
+                                                    strtolower($lamaran['tipe_pekerjaan']) == 'magang' && 
+                                                    strtolower($lamaran['status']) == 'diterima'): ?>
+                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-laporan<?= $lamaran['id'] ?>">
+                                                    <span>Buat Laporan</span>
+                                                </a>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+
+                                <?php if (empty($riwayatlamaran)): ?>
+                                <p class="text-muted text-center mt-3">Belum ada lamaran yang diajukan.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
 
+        <?php foreach ($riwayatlamaran as $lamaran): ?>
+        <div class="modal fade" id="modal-detail<?= $lamaran['id'] ?>" tabindex="-1"
+            aria-labelledby="modalDetailLabel<?= $lamaran['id'] ?>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
 
+                    <!-- Gradient Header -->
+                    <div class="modal-header text-white px-4 pt-4 pb-3 bg-gradient-primary">
+                        <div>
+                            <h1 class="fs-4 fw-semibold text-white mb-0">Detail Lamaran</h1>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Tutup"></button>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="modal-body bg-light-subtle px-4 py-4">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="bg-white rounded-3 p-3 shadow-sm">
+                                    <small class="text-muted">Perusahaan</small>
+                                    <div class="fw-semibold"><?= $lamaran['nama_perusahaan'] ?></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-white rounded-3 p-3 shadow-sm">
+                                    <small class="text-muted">Lowongan</small>
+                                    <div class="fw-semibold"><?= $lamaran['judul'] ?></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white rounded-3 p-3 shadow-sm">
+                                    <small class="text-muted">Tanggal Lamaran</small>
+                                    <div class="fw-semibold"><?= $lamaran['tanggal_lamaran'] ?></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white rounded-3 p-3 shadow-sm">
+                                    <small class="text-muted">Status</small>
+                                    <div class="fw-semibold"><?= $lamaran['status'] ?></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-white rounded-3 p-3 shadow-sm">
+                                    <small class="text-muted">Keterangan</small>
+                                    <div class="fw-semibold"><?= $lamaran['keterangan'] ?? '-' ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+
+        <?php foreach ($riwayatlamaran as $lamaran): ?>
+        <?php if (
+            strtolower($lamaran['tipe_pekerjaan']) == 'magang' && 
+            strtolower($lamaran['status']) == 'diterima'): ?>
+
+        <!-- Modal Input Laporan -->
+        <div class="modal fade" id="modal-laporan<?= $lamaran['id'] ?>" tabindex="-1"
+            aria-labelledby="modalLaporanLabel<?= $lamaran['id'] ?>" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+
+                    <!-- Header -->
+                    <div class="modal-header text-white px-4 pt-4 pb-3 bg-gradient-primary">
+                        <div>
+                            <h1 class="fs-4 fw-semibold text-white mb-0">Laporan Magang</h1>
+                            <p class="mb-0 small opacity-75">Perusahaan: <?= $lamaran['nama_perusahaan'] ?></p>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Tutup"></button>
+                    </div>
+
+                    <!-- Body -->
+                    <form action="<?= base_url('Home/laporanMagang'); ?>" method="post" enctype="multipart/form-data">
+                        <div class="modal-body bg-light-subtle px-4 py-4">
+                            <input type="hidden" name="id_lamaran" value="<?= $lamaran['id'] ?>">
+
+                            <div class="mb-3">
+                                <label for="judul<?= $lamaran['id'] ?>" class="form-label fw-semibold">Judul
+                                    Laporan</label>
+                                <input type="text" class="form-control" name="judul" id="judul<?= $lamaran['id'] ?>"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="isi<?= $lamaran['id'] ?>" class="form-label fw-semibold">Isi Laporan</label>
+                                <textarea name="isi_laporan" id="isi_laporan<?= $lamaran['id'] ?>"
+                                    class="form-control rich-text" rows="10"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer bg-light-subtle px-4 pb-4 pt-2 border-0">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Kirim Laporan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
     </div>
     </div>
     </div>
+
+    <script src="https://cdn.tiny.cloud/1/tr85vet6cyl7ce9q24zyh7oy5pi69zpknmcgoju139xquv3d/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea.rich-text',
+            plugins: 'lists link image table code',
+            toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
+            menubar: false,
+            height: 300
+        });
+    </script>
+
+
     <!--   Core JS Files   -->
     <script src=<?= base_url("argon/js/core/popper.min.js")?>></script>
     <script src=<?= base_url("argon/js/core/bootstrap.min.js")?>></script>
