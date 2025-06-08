@@ -12,7 +12,7 @@
           <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
           <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
         </ol>
-        <h6 class="font-weight-bolder text-white mb-0"><?= session()->get('username'); ?> <?= session()->get('peran'); ?> <?= session()->get('id_perusahaan'); ?></h6>
+        <h6 class="font-weight-bolder text-white mb-0"><?= ucfirst(session()->get('username')); ?></h6>
       </nav>
       <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -68,119 +68,127 @@
   <!-- End Navbar -->
   <div class="container-fluid py-4">
     <div class="row">
+      <!-- Pengguna -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                  <h5 class="font-weight-bolder">
-                    $53,000
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                    since yesterday
-                  </p>
+        <a href="<?= base_url('admin/pengguna') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Pengguna</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlPengguna) ?>
+                    </h5>
+                    <p class="mb-0">
+                      <!-- Bisa kasih info tambahan di sini -->
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                  <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                    <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- Perusahaan -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                  <h5 class="font-weight-bolder">
-                    2,300
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                    since last week
-                  </p>
+        <a href="<?= base_url('admin/perusahaan') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Perusahaan</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlPerusahaan) ?>
+                    </h5>
+                    <p class="mb-0"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                  <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                    <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- Data Lowongan -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                  <h5 class="font-weight-bolder">
-                    +3,462
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                    since last quarter
-                  </p>
+        <a href="<?= base_url('admin/lowongan') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Lowongan</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlLowongan) ?>
+                    </h5>
+                    <p class="mb-0"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                  <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                    <i class="ni ni-bag-17 text-lg opacity-10" aria-hidden="true"></i>
+                    <!-- GANTI IKON YANG PASTI ADA -->
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                  <h5 class="font-weight-bolder">
-                    $103,430
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                  </p>
+
+      <!-- Laporan Magang -->
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <a href="<?= base_url('admin/laporan-magang') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Laporan</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlLaporanMagang) ?>
+                    </h5>
+                    <p class="mb-0"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                  <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                    <i class="ni ni-notification-70 text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
+
     <div class="row mt-4">
       <div class="col-lg-7 mb-lg-0 mb-4">
         <div class="card z-index-2 h-100">
           <div class="card-header pb-0 pt-3 bg-transparent">
-            <h6 class="text-capitalize">Sales overview</h6>
+            <h6 class="text-capitalize">Lowongan per Tahun <?= date('Y') ?></h6>
             <p class="text-sm mb-0">
               <i class="fa fa-arrow-up text-success"></i>
-              <span class="font-weight-bold">4% more</span> in 2021
+              <span class="font-weight-bold">Statistik Lowongan</span>
             </p>
           </div>
           <div class="card-body p-3">
             <div class="chart">
-              <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+              <canvas id="chart-lowongan" class="chart-canvas" height="300"></canvas>
             </div>
           </div>
         </div>
@@ -235,6 +243,39 @@
         </div>
       </div>
     </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  var ctx = document.getElementById("chart-lowongan").getContext("2d");
+  var chartLowongan = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: <?= $bulan; ?>,
+      datasets: [{
+        label: "Lowongan per Bulan",
+        data: <?= $jumlah; ?>,
+        backgroundColor: "rgba(58, 65, 111, 0.2)", // warna primary transparan
+        borderColor: "rgba(58, 65, 111, 1)",       // warna primary solid
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
 
     <?= $this->endSection(); ?>
     <!-- Menutup bagian konten -->

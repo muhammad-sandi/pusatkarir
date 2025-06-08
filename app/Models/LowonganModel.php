@@ -14,6 +14,16 @@ class LowonganModel extends Model
         'tanggal_dipasang', 'tanggal_berakhir', 'batas_lamaran'
     ];
 
+    public function getLowongan()
+    {
+    return $this->db->table('lowongan')
+        ->select('lowongan.*, perusahaan.nama_perusahaan')
+        ->join('perusahaan', 'perusahaan.id = lowongan.id_perusahaan')
+        ->get()
+        ->getResultArray();
+    }
+
+
     public function getLowonganByPerusahaan()
     {
     return $this->select('lowongan.*, perusahaan.nama_perusahaan, perusahaan.deskripsi_perusahaan, perusahaan.alamat, perusahaan.industri, perusahaan.kontak, pengguna.foto')

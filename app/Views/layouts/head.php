@@ -21,4 +21,6 @@
     <link href=<?= base_url("argon/css/nucleo-svg.css") ?> rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href=<?= base_url("argon/css/argon-dashboard.css?v=2.0.4") ?> rel="stylesheet" />
+    <!-- CDN Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

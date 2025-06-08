@@ -36,108 +36,109 @@
 
 <body>
     <div class="page-header-wrapper">
-        <div class="page-header-bg-pattern-holder">
-            <div class="bg-pattern-top"></div>
-            <div class="bg-pattern-bottom"></div>
-        </div>
-        <!--//page-header-bg-pattern-holder-->
+		<div class="page-header-bg-pattern-holder">
+			<div class="bg-pattern-top"></div>
+			<div class="bg-pattern-bottom"></div>
+		</div>
+		<!--//page-header-bg-pattern-holder-->
 
-        <header class="header">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg">
-                    <div class="site-logo me-3">
-                        <a class="navbar-brand" href=<?= base_url('home')?>>
-                            <img class="logo-icon" src=<?= base_url("assets/images/site-logo.svg")?> alt="logo">
-                        </a>
-                    </div>
-                    <!--//site-logo-->
-
-
-                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span> </span>
-                        <span> </span>
-                        <span> </span>
-                    </button>
-
-                    <div class="collapse navbar-collapse ms-auto" id="navigation">
-
-                        <ul class="navbar-nav ms-auto align-items-lg-center">
-                            <li class="nav-item me-lg-4">
-                                <a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
-                            </li>
-                            <li class="nav-item dropdown me-lg-4">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">Profil</a>
-                                <ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-                                    <li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
-                                    <li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown pt-3 pt-lg-0">
-                                <?php if (session()->get('username')): ?>
-                                <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
-                                        class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
-                                    <li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
-                                    <li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
-                                </ul>
-                                <?php else: ?>
-                                <a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
-                                <?php endif; ?>
-                            </li>
+		<header class="header">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg">
+					<div class="site-logo me-3">
+						<a class="navbar-brand" href=<?= base_url('home')?>>
+							<img class="logo" src=<?= base_url("assets/images/logo.png")?> alt="Logo">
+						</a>
+					</div>
+					<!--//site-logo-->
 
 
-                        </ul>
-                        <!--//navbar-nav-->
+					<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span> </span>
+						<span> </span>
+						<span> </span>
+					</button>
 
-                    </div>
-                </nav>
-            </div>
-            <!--//container-->
+					<div class="collapse navbar-collapse ms-auto" id="navigation">
 
-        </header>
-        <!--//header-->
-        <div class="page-heading-holder">
-            <div class="container text-center">
-                <h1 class="page-heading mb-3">Selamat Datang di Pusat Karir FIKD</h1>
+						<ul class="navbar-nav ms-auto align-items-lg-center">
+							<li class="nav-item me-lg-4">
+								<a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
+							</li>
+							<li class="nav-item dropdown me-lg-4">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+									aria-expanded="false">Profil</a>
+								<ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
+									<li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
 
-                <div class="page-heading-sub single-col-max mx-auto">
-                    <div class="help-search-intro">
-                        Silakan ketikkan kata kunci untuk menemukan lowongan.
-                    </div>
-                    <div class="help-search-main pt-3 d-block mx-auto">
-                        <form class="search-form w-100" action="<?= base_url('Home/search') ?>" method="GET">
-                            <input type="text" placeholder="Masukkan kata kunci.." name="search"
-                                class="form-control search-input">
-                            <button type="submit" class="btn search-btn" value="Search">
-                                <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="search" transform="translate(-1.000000, 0.000000)" fill="#FFFFFF"
-                                            fill-rule="nonzero">
-                                            <path
-                                                d="M11.7297644,1.56712981 C9.1503137,-0.644294379 5.30290309,-0.496046815 2.90126795,1.90730746 C0.499632815,4.31066174 0.354138355,8.15817744 2.56740774,10.7360451 C4.78067712,13.3139128 8.60590394,13.7523024 11.345,11.742 L11.344,11.742 C11.3733333,11.782 11.406,11.8203333 11.442,11.857 L15.292,15.707 C15.6824653,16.0977414 16.3157585,16.0979653 16.7065,15.7075 C17.0972414,15.3170347 17.0974653,14.6837415 16.707,14.293 L12.857,10.443 C12.8212661,10.40679 12.7828212,10.3733596 12.742,10.343 C14.7503419,7.60346614 14.3092152,3.778554 11.7297644,1.56712981 Z M9.75000002,10.3971144 C8.35769516,11.200962 6.64230484,11.200962 5.24999998,10.3971144 C3.85769513,9.5932668 2.99999998,8.10769519 3,6.50000001 C3.00000004,4.01471867 5.01471865,2.00000008 7.5,2.00000008 C9.98528135,2.00000008 12,4.01471867 12,6.50000001 C12,8.10769519 11.1423049,9.5932668 9.75000002,10.3971144 Z"
-                                                id="Shape"></path>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
-                    <!--//help-search-main-->
-                </div>
-            </div>
+								</ul>
+							</li>
+							<li class="nav-item dropdown pt-3 pt-lg-0">
+								<?php if (session()->get('username')): ?>
+								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
+										class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
+									<li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
+									<li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
+								</ul>
+								<?php else: ?>
+								<a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
+								<?php endif; ?>
+							</li>
 
-        </div>
-        <!--//page-heading-holder-->
-    </div>
+
+						</ul>
+						<!--//navbar-nav-->
+
+					</div>
+				</nav>
+			</div>
+			<!--//container-->
+
+		</header>
+		<!--//header-->
+
+		<div class="page-heading-holder">
+			<div class="container text-center">
+				<h1 class="page-heading mb-3">Selamat Datang di Pusat Karir Unsurya</h1>
+
+				<div class="page-heading-sub single-col-max mx-auto">
+					<div class="help-search-intro">
+						Silakan ketikkan kata kunci untuk menemukan lowongan.
+					</div>
+					<div class="help-search-main pt-3 d-block mx-auto">
+						<form class="search-form w-100" action="<?= base_url('Home/search') ?>" method="GET">
+							<input type="text" placeholder="Masukkan kata kunci.." name="search"
+								class="form-control search-input">
+							<button type="submit" class="btn search-btn" value="Search">
+								<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
+									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<g id="search" transform="translate(-1.000000, 0.000000)" fill="#FFFFFF"
+											fill-rule="nonzero">
+											<path
+												d="M11.7297644,1.56712981 C9.1503137,-0.644294379 5.30290309,-0.496046815 2.90126795,1.90730746 C0.499632815,4.31066174 0.354138355,8.15817744 2.56740774,10.7360451 C4.78067712,13.3139128 8.60590394,13.7523024 11.345,11.742 L11.344,11.742 C11.3733333,11.782 11.406,11.8203333 11.442,11.857 L15.292,15.707 C15.6824653,16.0977414 16.3157585,16.0979653 16.7065,15.7075 C17.0972414,15.3170347 17.0974653,14.6837415 16.707,14.293 L12.857,10.443 C12.8212661,10.40679 12.7828212,10.3733596 12.742,10.343 C14.7503419,7.60346614 14.3092152,3.778554 11.7297644,1.56712981 Z M9.75000002,10.3971144 C8.35769516,11.200962 6.64230484,11.200962 5.24999998,10.3971144 C3.85769513,9.5932668 2.99999998,8.10769519 3,6.50000001 C3.00000004,4.01471867 5.01471865,2.00000008 7.5,2.00000008 C9.98528135,2.00000008 12,4.01471867 12,6.50000001 C12,8.10769519 11.1423049,9.5932668 9.75000002,10.3971144 Z"
+												id="Shape"></path>
+										</g>
+									</g>
+								</svg>
+							</button>
+						</form>
+					</div>
+					<!--//help-search-main-->
+				</div>
+			</div>
+
+		</div>
+		<!--//page-heading-holder-->
+	</div>
     <!--//page-header-wrapper-->
 
     <section class="help-featured-section theme-section">

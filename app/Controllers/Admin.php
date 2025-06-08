@@ -7,19 +7,64 @@ use App\Models\PenggunaModel;
 use App\Models\PencariKerjaModel;
 use App\Models\PerusahaanModel;
 use App\Models\LaporanMagangModel;
+use App\Models\LowonganModel;
 
 class Admin extends BaseController
 {
     public function index()
     {
-        // Pastikan hanya admin yang dapat mengakses
-        if (session()->get('peran') !== 'admin') {
-            return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk admin.');
-        }
-
-        // Tampilkan halaman dashboard admin
-        return view('Admin/dashboard');
+    // Pastikan hanya admin yang dapat mengakses
+    if (session()->get('peran') !== 'admin') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk admin.');
     }
+
+    // Load model
+    $userModel = new \App\Models\PenggunaModel();
+    $perusahaanModel = new \App\Models\PerusahaanModel();
+    $lowonganModel = new \App\Models\LowonganModel();
+    $laporanMagangModel = new \App\Models\LaporanMagangModel();
+
+    // Hitung data total
+    $data = [
+        'jmlPengguna' => $userModel->countAll(),
+        'jmlPerusahaan' => $perusahaanModel->countAll(),
+        'jmlLowongan' => $lowonganModel->countAll(),
+        'jmlLaporanMagang' => $laporanMagangModel->countAll(),
+    ];
+
+    // Ambil data lowongan per bulan untuk tahun berjalan (2025 misal)
+    $tahunIni = date('Y');
+    $db = \Config\Database::connect();
+    $builder = $db->table('lowongan');
+
+    $builder->select("MONTH(tanggal_dipasang) as bulan, COUNT(*) as total");
+    $builder->where("YEAR(tanggal_dipasang)", $tahunIni);
+    $builder->groupBy("bulan");
+    $builder->orderBy("bulan", "ASC");
+
+    $query = $builder->get()->getResultArray();
+
+    // Inisialisasi array 12 bulan dengan 0
+    $bulan = [];
+    $jumlah = [];
+    for ($i = 1; $i <= 12; $i++) {
+        $bulan[$i] = date('F', mktime(0, 0, 0, $i, 10)); // Nama bulan Januari, Februari, dst
+        $jumlah[$i] = 0;
+    }
+
+    // Isi data jumlah dari query
+    foreach ($query as $row) {
+        $jumlah[(int)$row['bulan']] = (int)$row['total'];
+    }
+
+    // Ambil nilai dan label untuk chart
+    $data['bulan'] = json_encode(array_values($bulan)); // supaya index dimulai dari 0
+    $data['jumlah'] = json_encode(array_values($jumlah));
+
+    // Tampilkan halaman dashboard admin dengan data
+    return view('Admin/dashboard', $data);
+    }
+
 
     public function pengguna()
     {
@@ -163,6 +208,23 @@ class Admin extends BaseController
 
             return view('admin/pengguna', $data);
         }
+    }
+
+    public function lowongan()
+    {
+    // Pastikan hanya admin yang dapat mengakses
+    if (session()->get('peran') !== 'admin') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk admin.');
+    }
+
+    // Inisialisasi model dulu
+    $lowonganModel = new \App\Models\LowonganModel();
+
+    // Ambil semua data lowongan
+    $data['lowongan'] = $lowonganModel->getLowongan();
+
+    // Tampilkan view
+    return view('Admin/lowongan', $data);
     }
 
     public function lapranMagang()
