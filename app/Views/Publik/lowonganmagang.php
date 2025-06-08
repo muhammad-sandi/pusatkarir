@@ -63,41 +63,41 @@
 
                     <div class="collapse navbar-collapse ms-auto" id="navigation">
 
-						<ul class="navbar-nav ms-auto align-items-lg-center">
-							<li class="nav-item me-lg-4">
-								<a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
-							</li>
-							<li class="nav-item dropdown me-lg-4">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-expanded="false">Profil</a>
-								<ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-									<li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
-									<li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
+                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                            <li class="nav-item me-lg-4">
+                                <a class="nav-link" href=<?= base_url('home')?>>Beranda</a>
+                            </li>
+                            <li class="nav-item dropdown me-lg-4">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">Profil</a>
+                                <ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
+                                    <li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+                                    <li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
 
-								</ul>
-							</li>
-							<li class="nav-item dropdown pt-3 pt-lg-0">
-								<?php if (session()->get('username')): ?>
-								<a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false">
-									<img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
-										class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
-									<li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
-									<li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
-								</ul>
-								<?php else: ?>
-								<a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
-								<?php endif; ?>
-							</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown pt-3 pt-lg-0">
+                                <?php if (session()->get('username')): ?>
+                                <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/uploads/profil/<?= session()->get('foto') ?>" alt="Foto Profil"
+                                        class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/Home/profil">Profil</a></li>
+                                    <li><a class="dropdown-item" href="/Home/riwayatlamaran">Riwayat Lamaran</a></li>
+                                    <li><a class="dropdown-item" href="/auth/keluar">Keluar</a></li>
+                                </ul>
+                                <?php else: ?>
+                                <a class="nav-btn btn btn-primary text-white" href="/auth/masuk">Masuk</a>
+                                <?php endif; ?>
+                            </li>
 
 
-						</ul>
-						<!--//navbar-nav-->
+                        </ul>
+                        <!--//navbar-nav-->
 
-					</div>
+                    </div>
                 </nav>
             </div>
             <!--//container-->
@@ -188,8 +188,12 @@
                         </a>
                     </div>
                 </div>
-                <?php } ?>
-                <?php endif; ?>
+               <?php } ?>
+				<?php else : ?>
+				<div class="col-12 text-center py-5">
+					<p class="text-muted">Tidak ada data lowongan tersedia saat ini.</p>
+				</div>
+				<?php endif; ?>
 
             </div>
 

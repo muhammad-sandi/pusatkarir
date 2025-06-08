@@ -21,11 +21,33 @@ class Home extends BaseController
         $this->penggunaModel = new PenggunaModel();
     }
 
-    public function index(): string
+   public function index(): string
     {
-        $data['lowongan'] = $this->lowonganModel->getLowonganByPerusahaan();
-        $data['lowonganmagang'] = $this->lowonganModel->getLowonganMagangByPerusahaan();
-        return view('Publik/home', $data);
+    // Ambil data lowongan
+    $data['lowongan'] = $this->lowonganModel->getLowonganByPerusahaan();
+    $data['lowonganmagang'] = $this->lowonganModel->getLowonganMagangByPerusahaan();
+
+    // Koneksi ke database
+    $db = \Config\Database::connect();
+    $kunjungan = $db->table('kunjungan');
+
+    // Catat kunjungan
+    $kunjungan->insert([
+        'alamat_ip' => $this->request->getIPAddress(),
+        'agen_pengguna' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+        'waktu_dikunjungi' => date('Y-m-d H:i:s')
+    ]);
+
+    // Ambil statistik kunjungan
+    $data['statistik'] = [
+        'keseluruhan' => $kunjungan->countAll(),
+        'harian' => $kunjungan->where('DATE(waktu_dikunjungi)', date('Y-m-d'))->countAllResults(),
+        'mingguan' => $kunjungan->where('waktu_dikunjungi >=', date('Y-m-d', strtotime('-7 days')))->countAllResults(),
+        'bulanan' => $kunjungan->where('waktu_dikunjungi >=', date('Y-m-01'))->countAllResults(),
+        'tahunan' => $kunjungan->where('waktu_dikunjungi >=', date('Y-01-01'))->countAllResults()
+    ];
+
+    return view('Publik/home', $data);
     }
 
     public function semuaLowongan(){

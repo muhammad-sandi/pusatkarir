@@ -376,4 +376,20 @@ public function ubahFotoProfil()
     return redirect()->back()->with('error', 'Gagal mengunggah foto.');
 }
 
+public function laporanMagang()
+{
+    if (session()->get('peran') !== 'perusahaan') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk perusahaan.');
+    }
+
+    $laporanMagangModel = new \App\Models\LaporanMagangModel();
+    $id_pengguna = session()->get('id');
+
+    $data['laporan'] = $laporanMagangModel->getLaporanByPerusahaan($id_pengguna, 10);
+    $data['pager'] = $laporanMagangModel->pager;
+
+    return view('Perusahaan/laporanmagang', $data);
+}
+
+
 }

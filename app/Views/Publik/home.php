@@ -24,6 +24,7 @@
 
 	<!-- FontAwesome JS-->
 	<script defer src=<?= base_url("assets/fontawesome/js/all.min.js")?>></script>
+	<script src="https://unpkg.com/feather-icons"></script>
 
 	<!-- Theme CSS -->
 	<link id="theme-style" rel="stylesheet" href=<?= base_url("assets/css/devdesk.css")?>>
@@ -180,9 +181,9 @@
 							<div class="item-desc">
 								<span
 									class="badge 
-									<?= $tersedia['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
-									($tersedia['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
-									($tersedia['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> px-3 py-1 rounded-pill">
+                            <?= $tersedia['tipe_pekerjaan'] == 'Magang' ? 'bg-warning text-dark' : 
+                            ($tersedia['tipe_pekerjaan'] == 'Pelatihan' ? 'bg-info text-dark' : 
+                            ($tersedia['tipe_pekerjaan'] == 'Penuh Waktu' ? 'bg-success text-white' : 'bg-secondary')) ?> px-3 py-1 rounded-pill">
 									<?= $tersedia['tipe_pekerjaan'] ?>
 								</span>
 							</div>
@@ -190,7 +191,12 @@
 					</div>
 				</div>
 				<?php } ?>
+				<?php else : ?>
+				<div class="col-12 text-center py-5">
+					<p class="text-muted">Tidak ada data lowongan tersedia saat ini.</p>
+				</div>
 				<?php endif; ?>
+
 
 				<!-- Tombol Lihat Semua -->
 				<div class="text-end mt-4">
@@ -261,6 +267,10 @@
 					</div>
 				</div>
 				<?php } ?>
+				<?php else : ?>
+				<div class="col-12 text-center py-5">
+					<p class="text-muted">Tidak ada data lowongan tersedia saat ini.</p>
+				</div>
 				<?php endif; ?>
 
 				<!-- Tombol Lihat Semua -->
@@ -287,172 +297,112 @@
 	<section class="help-category-section theme-section">
 		<div class="container">
 			<div class="section-header text-center mb-5">
-				<h2 class="section-title mb-3">Categories</h2>
+				<h2 class="section-title mb-3">Panduan Penggunaan Aplikasi</h2>
 			</div>
 			<div class="row text-center align-content-stretch justify-content-center">
-				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
-					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category.html">
-							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/rocket-icon-alt.svg")?> alt="icon">
-							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Getting Started</h3>
-							<div class="item-desc">
-								Donec augue augue, gravida eu enim sed, scelerisque maximus magna.
-							</div>
-							<div class="item-count">8 articles</div>
-						</a>
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
-				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
-					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
-							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/monitor-icon-alt.svg")?> alt="icon">
-							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Product Guide</h3>
-							<div class="item-desc">
-								Nam ex ante, suscipit nec purus sed, varius dapibus magna.
-							</div>
-							<div class="item-count">28 articles</div>
-						</a>
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
 
 				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
 					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
+						<a class="item-link" href="<?= base_url('auth/daftar') ?>">
 							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/cog-icon-alt.svg")?> alt="icon">
+								<i data-feather="user-plus" style="width:48px; height:48px; stroke-width:2;"></i>
 							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Integrations</h3>
+							<h3 class="item-heading">Daftar Akun</h3>
 							<div class="item-desc">
-								Integer et magna aliquam, aliquam mi at, fringilla libero.
+								Buat akun baru untuk mulai melamar pekerjaan.
 							</div>
-							<div class="item-count">12 articles</div>
+							<!-- <div class="item-count">Daftar</div> -->
 						</a>
 					</div>
-					<!--//item-inner-->
 				</div>
-				<!--//item-->
-				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
-					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
-							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/users-icon-alt.svg")?> alt="icon">
-							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Collaboration</h3>
-							<div class="item-desc">
-								Maecenas tempus non dolor a viverra. Nulla placerat rutrum interdum.
-							</div>
-							<div class="item-count">8 articles</div>
-						</a>
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
-				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
-					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
-							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/dollar-icon-alt.svg")?> alt="icon">
-							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Billing &amp; Subscription</h3>
-							<div class="item-desc">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							</div>
-							<div class="item-count">4 articles</div>
-						</a>
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
-
 
 				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
 					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
+						<a class="item-link" href="<?= base_url('auth/masuk') ?>">
 							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/code-icon-alt.svg")?> alt="icon">
+								<i data-feather="log-in" style="width:48px; height:48px; stroke-width:2;"></i>
 							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Developers &amp; APIs</h3>
+							<h3 class="item-heading">Masuk Akun</h3>
 							<div class="item-desc">
-								Suspendisse tristique, ex vitae semper placerat, odio dolor varius mi, eu gravida purus
-								tortor et dolor.
+								Masuk menggunakan email dan password yang sudah terdaftar.
 							</div>
-							<div class="item-count">23 articles</div>
+							<!-- <div class="item-count">Masuk</div> -->
 						</a>
 					</div>
-					<!--//item-inner-->
 				</div>
-				<!--//item-->
+
 				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
 					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
+						<a class="item-link" href="#">
 							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/help-icon-alt.svg")?> alt="icon">
+								<i data-feather="file-text" style="width:48px; height:48px; stroke-width:2;"></i>
 							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Support &amp; Troubleshooting</h3>
+							<h3 class="item-heading">Siapkan CV & Surat Lamaran</h3>
 							<div class="item-desc">
-								Aliquam felis urna, consequat id velit a, ultricies luctus nibh.
+								Upload CV dan surat lamaran yang lengkap dan menarik.
 							</div>
-							<div class="item-count">3 articles</div>
+							<!-- <div class="item-count">1 artikel</div> -->
 						</a>
 					</div>
-					<!--//item-inner-->
 				</div>
-				<!--//item-->
+
 				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
 					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
+						<a class="item-link" href="#">
 							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/okay-hand-icon-alt.svg")?> alt="icon">
+								<i data-feather="briefcase" style="width:48px; height:48px; stroke-width:2;"></i>
 							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Best Practices</h3>
+							<h3 class="item-heading">Lamar Lowongan</h3>
 							<div class="item-desc">
-								Aenean vehicula ultrices ligula, non porta libero imperdiet sit amet.
+								Pilih lowongan dan kirim lamaran secara online.
 							</div>
-							<div class="item-count">12 articles</div>
+							<!-- <div class="item-count">1 artikel</div> -->
 						</a>
 					</div>
-					<!--//item-inner-->
 				</div>
-				<!--//item-->
+
 				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
 					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
-						<a class="item-link" href="help-category-alt.html">
+						<a class="item-link" href="#">
 							<div class="icon-holder mb-4">
-								<img src=<?= base_url("assets/images/help/resource-icon-alt.svg")?> alt="icon">
+								<i data-feather="check-circle" style="width:48px; height:48px; stroke-width:2;"></i>
 							</div>
-							<!--//icon-holder-->
-							<h3 class="item-heading">Resources</h3>
+							<h3 class="item-heading">Konfirmasi Perusahaan</h3>
 							<div class="item-desc">
-								Vivamus felis nunc, pellentesque ac quam a, ullamcorper interdum erat.
+								Tunggu perusahaan memproses lamaran kamu.
 							</div>
-							<div class="item-count">35 articles</div>
+							<!-- <div class="item-count">1 artikel</div> -->
 						</a>
 					</div>
-					<!--//item-inner-->
 				</div>
-				<!--//item-->
+
+				<div class="item col-12 col-md-6 col-lg-4 py-4 p-md-4">
+					<div class="item-inner shadow rounded-4 p-4 p-lg-5">
+						<a class="item-link" href="<?= base_url('home/riwayatlamaran') ?>">
+							<div class="icon-holder mb-4">
+								<i data-feather="folder" style="width:48px; height:48px; stroke-width:2;"></i>
+							</div>
+							<h3 class="item-heading">Lihat Status Lamaran</h3>
+							<div class="item-desc">
+								Cek status lamaran kamu di halaman Riwayat Lamaran.
+							</div>
+							<!-- <div class="item-count">Riwayat Lamaran</div> -->
+						</a>
+					</div>
+				</div>
+
 			</div>
-			<!--//row-->
-
 		</div>
-		<!--//container-->
+
+		<script src="https://unpkg.com/feather-icons"></script>
+		<script>
+			feather.replace()
+		</script>
 	</section>
+
+
+
+
 	<!--//help-overview-section-->
 
 
@@ -497,47 +447,51 @@
 						<h2 class="section-title text-white">Informasi Kunjungan Website</h2>
 					</div>
 					<div class="section-intro single-col-max mx-auto">
-						Berikut ini adalah statistik kunjungan website Pusat Karir FIKD.
+						Berikut ini adalah statistik kunjungan website Pusat Karir Unsurya.
 					</div>
 					<div class="row text-white pt-4 pt-lg-5 g-4">
+
 						<div class="col-6 col-md-4 col-lg-2 mx-auto">
 							<div class="border rounded-4 p-3 h-100">
-								<div class="fs-4 fw-bold">123,456</div>
+								<div class="fs-4 fw-bold"><?= number_format($statistik['keseluruhan']) ?></div>
 								<div class="small">Keseluruhan</div>
 							</div>
 						</div>
+
 						<div class="col-6 col-md-4 col-lg-2 mx-auto">
 							<div class="border rounded-4 p-3 h-100">
-								<div class="fs-4 fw-bold">1,234</div>
+								<div class="fs-4 fw-bold"><?= number_format($statistik['harian']) ?></div>
 								<div class="small">Harian</div>
 							</div>
 						</div>
+
 						<div class="col-6 col-md-4 col-lg-2 mx-auto">
 							<div class="border rounded-4 p-3 h-100">
-								<div class="fs-4 fw-bold">8,765</div>
+								<div class="fs-4 fw-bold"><?= number_format($statistik['mingguan']) ?></div>
 								<div class="small">Mingguan</div>
 							</div>
 						</div>
+
 						<div class="col-6 col-md-4 col-lg-2 mx-auto">
 							<div class="border rounded-4 p-3 h-100">
-								<div class="fs-4 fw-bold">35,678</div>
+								<div class="fs-4 fw-bold"><?= number_format($statistik['bulanan']) ?></div>
 								<div class="small">Bulanan</div>
 							</div>
 						</div>
+
 						<div class="col-6 col-md-4 col-lg-2 mx-auto">
 							<div class="border rounded-4 p-3 h-100">
-								<div class="fs-4 fw-bold">412,345</div>
+								<div class="fs-4 fw-bold"><?= number_format($statistik['tahunan']) ?></div>
 								<div class="small">Tahunan</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
-				<!--//z-wrapper-->
 			</div>
-			<!--//section-inner-->
 		</div>
-		<!--//container-->
 	</section>
+
 
 	<a href="https://wa.me/6281283532881"
 		class="btn btn-success btn-lg rounded-circle shadow position-fixed d-flex justify-content-center align-items-center"

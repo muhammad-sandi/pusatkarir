@@ -190,7 +190,11 @@
                     </div>
                 </div>
                 <?php } ?>
-                <?php endif; ?>
+				<?php else : ?>
+				<div class="col-12 text-center py-5">
+					<p class="text-muted">Tidak ada data lowongan tersedia saat ini.</p>
+				</div>
+				<?php endif; ?>
 
             </div>
 

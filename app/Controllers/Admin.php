@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PenggunaModel;
 use App\Models\PencariKerjaModel;
 use App\Models\PerusahaanModel;
+use App\Models\LaporanMagangModel;
 
 class Admin extends BaseController
 {
@@ -162,5 +163,23 @@ class Admin extends BaseController
 
             return view('admin/pengguna', $data);
         }
+    }
+
+    public function lapranMagang()
+    {
+        // Pastikan hanya admin yang dapat mengakses
+        if (session()->get('peran') !== 'admin') {
+            return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk admin.');
+        }
+
+        // Load model
+        $laporanMagangModel = new LaporanMagangModel();
+
+        // Ambil data pengguna
+        $data['laporan'] = $laporanMagangModel->paginate(10, 'laporan'); // 10 data per halaman
+        $data['pager'] = $laporanMagangModel->pager;
+
+        // Kirim data ke view
+        return view('Admin/laporanmagang', $data);
     }
 }
