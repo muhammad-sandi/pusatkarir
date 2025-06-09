@@ -24,13 +24,66 @@ class Perusahaan extends BaseController
 
     public function index()
     {
-        // Pastikan hanya perusahaan yang dapat mengakses
-        if (session()->get('peran') !== 'perusahaan') {
-            return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk perusahaan.');
-        }
-
-        return view('Perusahaan/dashboard');
+    // Pastikan hanya perusahaan yang dapat mengakses
+    if (session()->get('peran') !== 'perusahaan') {
+        return redirect()->to('/auth/masuk')->with('error', 'Akses hanya untuk perusahaan.');
     }
+
+    $idPerusahaan = session()->get('id_perusahaan'); // id perusahaan
+
+    // Load model
+    $lowonganModel = new \App\Models\LowonganModel();
+    $lamaranModel = new \App\Models\LamaranModel();
+    $db = \Config\Database::connect();
+
+    // Jumlah lowongan oleh perusahaan ini
+    $jmlLowongan = $lowonganModel
+        ->where('id_perusahaan', $idPerusahaan)
+        ->countAllResults();
+
+    // Jumlah lamaran untuk lowongan milik perusahaan ini
+    $jmlLamaran = $lamaranModel
+        ->join('lowongan', 'lowongan.id = lamaran.id_lowongan')
+        ->where('lowongan.id_perusahaan', $idPerusahaan)
+        ->countAllResults();
+
+    // Jumlah laporan magang (JOIN: laporan_magang → lamaran → lowongan)
+    $jmlLaporan = $db->table('laporan_magang')
+        ->join('lamaran', 'laporan_magang.id_lamaran = lamaran.id')
+        ->join('lowongan', 'lowongan.id = lamaran.id_lowongan')
+        ->where('lowongan.id_perusahaan', $idPerusahaan)
+        ->countAllResults();
+
+    // Ambil data pelamar per bulan (chart)
+    $builder = $db->table('lamaran');
+    $builder->select("MONTH(lamaran.tanggal_lamaran) as bulan, COUNT(*) as total");
+    $builder->join('lowongan', 'lowongan.id = lamaran.id_lowongan');
+    $builder->where('lowongan.id_perusahaan', $idPerusahaan);
+    $builder->groupBy("MONTH(lamaran.tanggal_lamaran)");
+    $builder->orderBy("bulan", "ASC");
+    $query = $builder->get()->getResultArray();
+
+    $bulan = [];
+    $jumlah = [];
+
+    foreach ($query as $row) {
+        $bulan[] = date('F', mktime(0, 0, 0, $row['bulan'], 10));
+        $jumlah[] = (int) $row['total'];
+    }
+
+    // Kirim semua data ke view
+    $data = [
+        'jmlLowongan' => $jmlLowongan,
+        'jmlLamaran' => $jmlLamaran,
+        'jmlLaporan' => $jmlLaporan,
+        'bulan' => json_encode($bulan),
+        'jumlah' => json_encode($jumlah),
+    ];
+
+    return view('Perusahaan/dashboard', $data);
+    }
+
+
 
     public function lowongan()
     {
@@ -166,6 +219,18 @@ public function hapusLowongan($id)
         return redirect()->to('/Perusahaan/lowongan')->with('error', 'Lowongan tidak ditemukan atau Anda tidak memiliki izin untuk menghapusnya.');
     }
 }
+
+public function semuaLamaran()
+{
+    // Ambil ID perusahaan dari session
+    $idPerusahaan = session()->get('id_perusahaan');
+
+    $lamaranModel = new LamaranModel();
+    $data['lamaran'] = $lamaranModel->getLamaranAll($idPerusahaan);
+
+    return view('Perusahaan/lamaran', $data);
+}
+
 
 public function lihatLamaran($lowongan_id)
 {

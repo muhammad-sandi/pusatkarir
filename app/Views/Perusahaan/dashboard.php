@@ -72,123 +72,100 @@
   <!-- End Navbar -->
   <div class="container-fluid py-4">
     <div class="row">
+      <!-- Jumlah Lowongan -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                  <h5 class="font-weight-bolder">
-                    $53,000
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                    since yesterday
-                  </p>
+        <a href="<?= base_url('perusahaan/lowongan') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Lowongan Saya</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlLowongan) ?>
+                    </h5>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                  <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                    <i class="ni ni-briefcase-24 text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- Jumlah Lamaran -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                  <h5 class="font-weight-bolder">
-                    2,300
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                    since last week
-                  </p>
+        <a href="<?= base_url('perusahaan/semualamaran') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Lamaran</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlLamaran) ?>
+                    </h5>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                  <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                    <i class="ni ni-send text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- Jumlah Laporan Magang -->
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                  <h5 class="font-weight-bolder">
-                    +3,462
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                    since last quarter
-                  </p>
+        <a href="<?= base_url('perusahaan/laporanmagang') ?>" style="text-decoration:none;">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Laporan Magang</p>
+                    <h5 class="font-weight-bolder">
+                      <?= number_format($jmlLaporan) ?>
+                    </h5>
+                  </div>
                 </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                  <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                  <h5 class="font-weight-bolder">
-                    $103,430
-                  </h5>
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                  </p>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                  <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                    <i class="ni ni-books text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
+
     <div class="row mt-4">
       <div class="col-lg-7 mb-lg-0 mb-4">
         <div class="card z-index-2 h-100">
           <div class="card-header pb-0 pt-3 bg-transparent">
-            <h6 class="text-capitalize">Sales overview</h6>
+            <h6 class="text-capitalize">Lamaran per Tahun <?= date('Y') ?></h6>
             <p class="text-sm mb-0">
               <i class="fa fa-arrow-up text-success"></i>
-              <span class="font-weight-bold">4% more</span> in 2021
+              <span class="font-weight-bold">Statistik Lamaran</span>
             </p>
           </div>
           <div class="card-body p-3">
             <div class="chart">
-              <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+              <canvas id="chart-lamaran" class="chart-canvas" height="300"></canvas>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-5">
         <div class="card card-carousel overflow-hidden h-100 p-0">
           <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
@@ -239,6 +216,64 @@
         </div>
       </div>
     </div>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById("chart-lamaran").getContext("2d");
+
+    var chartLamaran = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: <?= $bulan; ?>, // ["January", "February", ...]
+        datasets: [{
+          label: "Lamaran per Bulan",
+          data: <?= $jumlah; ?>, // [5, 10, 3, ...]
+          backgroundColor: "rgba(58, 65, 111, 0.2)", // Primary Argon transparan
+          borderColor: "rgba(58, 65, 111, 1)",       // Primary Argon solid
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: "#fff",
+          pointBorderColor: "rgba(58, 65, 111, 1)",
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            labels: {
+              color: '#344767',
+              font: {
+                weight: 'bold'
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+              color: "#7b809a"
+            }
+          },
+          x: {
+            ticks: {
+              color: "#7b809a"
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+<!-- Pastikan CDN Chart.js dimuat -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <?= $this->endSection(); ?>
     <!-- Menutup bagian konten -->
