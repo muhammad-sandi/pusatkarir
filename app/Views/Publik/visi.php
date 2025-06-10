@@ -67,8 +67,8 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">Profil</a>
                                 <ul class="dropdown-menu dropdown-menu-lg-end rounded shadow">
-                                    <li><a class="dropdown-item" href="help-category.html">Visi</a></li>
-                                    <li><a class="dropdown-item" href="help-category-alt.html">Misi</a></li>
+                                    <li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+									<li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
 
                                 </ul>
                             </li>

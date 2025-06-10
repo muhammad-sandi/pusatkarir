@@ -141,8 +141,8 @@
         <div class="container">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href=<?= base_url('home')?>>Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Visi</li>
+                    <li><a class="dropdown-item" href=<?= base_url('home/visi')?>>Visi</a></li>
+                    <li><a class="dropdown-item" href=<?= base_url('home/misi')?>>Misi</a></li>
                 </ol>
             </nav>
         </div>
@@ -150,95 +150,154 @@
     </div>
     <!--//help-breadcrumb-container-->
 
-   <div class="help-content-wrapper theme-section pt-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-xl-9">
-                <section class="main-section order-lg-last modern-section">
-                    <article class="help-article mb-0">
-                        <header class="article-header mb-0">
-                            <h1 class="heading-level-1 text-center mb-1">MISI: Manfaat Penerapan Konsep BMW</h1>
-                        </header>
+    <div class="help-content-wrapper theme-section pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-9">
+                    <section class="main-section order-lg-last modern-section">
+                        <article class="help-article mb-0">
+                            <header class="article-header mb-0">
+                                <h1 class="heading-level-1 text-center mb-1">MISI: Manfaat Penerapan Konsep BMW</h1>
+                            </header>
 
-                        <div class="figure-holder single-col-max mx-auto py-0">
-                            <figure class="figure mb-2">
-                                <img class="img-fluid" src="<?= base_url("/assets/images/visi_misi.jpg")?>"
-                                     alt="Konsep BMW: Bekerja, Melanjutkan Studi, Wirausaha">
-                                <figcaption class="figure-caption text-center mt-2">Pilar Utama Konsep BMW</figcaption>
-                            </figure>
-                        </div>
-                        <p>Penerapan konsep **Bekerja, Melanjutkan Studi, dan Wirausaha (BMW)** di Fakultas Ilmu Komputer dan Desain bukan sekadar visi, melainkan serangkaian misi konkret yang kami jalankan. Tujuan utamanya adalah untuk memastikan setiap lulusan kami tidak hanya memiliki bekal ilmu yang kuat, tetapi juga mampu mengimplementasikannya secara nyata di berbagai jalur karir. Berikut adalah misi-misi utama yang menjadi komitmen kami:</p>
+                            <div class="figure-holder single-col-max mx-auto py-0">
+                                <figure class="figure mb-2">
+                                    <img class="img-fluid" src="<?= base_url("/assets/images/visi_misi.jpg")?>"
+                                        alt="Konsep BMW: Bekerja, Melanjutkan Studi, Wirausaha">
+                                    <figcaption class="figure-caption text-center mt-2">Pilar Utama Konsep BMW
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <p>Penerapan konsep **Bekerja, Melanjutkan Studi, dan Wirausaha (BMW)** di Fakultas Ilmu
+                                Komputer dan Desain bukan sekadar visi, melainkan serangkaian misi konkret yang kami
+                                jalankan. Tujuan utamanya adalah untuk memastikan setiap lulusan kami tidak hanya
+                                memiliki bekal ilmu yang kuat, tetapi juga mampu mengimplementasikannya secara nyata di
+                                berbagai jalur karir. Berikut adalah misi-misi utama yang menjadi komitmen kami:</p>
 
-                        <div class="theme-callout theme-callout-info">
-                            <strong>Fokus Misi Kami:</strong> Setiap poin misi dirancang untuk mendukung visi BMW, memastikan lulusan siap kerja, berwawasan global, dan berjiwa inovatif.
-                        </div><h2 class="heading-level-2 mt-5">1. Membekali Siswa dengan Keterampilan Dunia Industri</h2>
-                        <p>Misi pertama kami adalah memastikan mahasiswa memiliki keterampilan teknis dan non-teknis yang sangat relevan dengan kebutuhan industri saat ini dan di masa depan. Kami menyadari bahwa dunia industri bergerak sangat cepat, sehingga kurikulum kami terus diperbarui dan disesuaikan dengan standar kompetensi global. Fokus kami tidak hanya pada teori, tetapi juga pada aplikasi praktis yang konkret.</p>
+                            <div class="theme-callout theme-callout-info">
+                                <strong>Fokus Misi Kami:</strong> Setiap poin misi dirancang untuk mendukung visi BMW,
+                                memastikan lulusan siap kerja, berwawasan global, dan berjiwa inovatif.
+                            </div>
+                            <h2 class="heading-level-2 mt-5">1. Membekali Siswa dengan Keterampilan Dunia Industri</h2>
+                            <p>Misi pertama kami adalah memastikan mahasiswa memiliki keterampilan teknis dan non-teknis
+                                yang sangat relevan dengan kebutuhan industri saat ini dan di masa depan. Kami menyadari
+                                bahwa dunia industri bergerak sangat cepat, sehingga kurikulum kami terus diperbarui dan
+                                disesuaikan dengan standar kompetensi global. Fokus kami tidak hanya pada teori, tetapi
+                                juga pada aplikasi praktis yang konkret.</p>
 
-                        <h3 class="heading-level-3">Strategi Pembekalan Keterampilan:</h3>
-                        <ul class="article-list">
-                            <li><strong>Kurikulum Adaptif:</strong> Mengembangkan dan memperbarui kurikulum secara berkala dengan melibatkan praktisi industri dan asosiasi profesional.</li>
-                            <li><strong>Praktikum dan Proyek Nyata:</strong> Menyediakan sarana dan kesempatan bagi mahasiswa untuk terlibat dalam proyek-proyek riil yang relevan dengan masalah di industri.</li>
-                            <li><strong>Sertifikasi Kompetensi:</strong> Mendorong mahasiswa untuk mengikuti sertifikasi profesional yang diakui secara nasional maupun internasional di bidang terkait.</li>
-                            <li><strong>Pengembangan Soft Skills:</strong> Mengintegrasikan pelatihan keterampilan komunikasi, kolaborasi, pemecahan masalah, dan pemikiran kritis dalam setiap mata kuliah.</li>
-                        </ul>
+                            <h3 class="heading-level-3">Strategi Pembekalan Keterampilan:</h3>
+                            <ul class="article-list">
+                                <li><strong>Kurikulum Adaptif:</strong> Mengembangkan dan memperbarui kurikulum secara
+                                    berkala dengan melibatkan praktisi industri dan asosiasi profesional.</li>
+                                <li><strong>Praktikum dan Proyek Nyata:</strong> Menyediakan sarana dan kesempatan bagi
+                                    mahasiswa untuk terlibat dalam proyek-proyek riil yang relevan dengan masalah di
+                                    industri.</li>
+                                <li><strong>Sertifikasi Kompetensi:</strong> Mendorong mahasiswa untuk mengikuti
+                                    sertifikasi profesional yang diakui secara nasional maupun internasional di bidang
+                                    terkait.</li>
+                                <li><strong>Pengembangan Soft Skills:</strong> Mengintegrasikan pelatihan keterampilan
+                                    komunikasi, kolaborasi, pemecahan masalah, dan pemikiran kritis dalam setiap mata
+                                    kuliah.</li>
+                            </ul>
 
-                        <h2 class="heading-level-2 mt-5">2. Memberikan Kesempatan Melanjutkan Studi ke Jenjang Lebih Tinggi</h2>
-                        <p>Kami berkomitmen untuk memfasilitasi mahasiswa yang berkeinginan kuat untuk melanjutkan pendidikan ke jenjang Magister (S2) dan Doktoral (S3). Misi ini didukung oleh penyediaan informasi, bimbingan, dan jaringan ke perguruan tinggi terkemuka yang memiliki akreditasi minimal 'Baik Sekali' serta program studi yang linier dengan bidang keilmuan yang diambil sebelumnya.</p>
+                            <h2 class="heading-level-2 mt-5">2. Memberikan Kesempatan Melanjutkan Studi ke Jenjang Lebih
+                                Tinggi</h2>
+                            <p>Kami berkomitmen untuk memfasilitasi mahasiswa yang berkeinginan kuat untuk melanjutkan
+                                pendidikan ke jenjang Magister (S2) dan Doktoral (S3). Misi ini didukung oleh penyediaan
+                                informasi, bimbingan, dan jaringan ke perguruan tinggi terkemuka yang memiliki
+                                akreditasi minimal 'Baik Sekali' serta program studi yang linier dengan bidang keilmuan
+                                yang diambil sebelumnya.</p>
 
-                        <h3 class="heading-level-3">Dukungan Pendidikan Lanjutan:</h3>
-                        <ol class="article-list-custom">
-                            <li><strong>Konsultasi Akademik:</strong> Menyediakan layanan konsultasi individu untuk perencanaan studi lanjutan, pemilihan universitas, dan persyaratan masuk.</li>
-                            <li><strong>Informasi Beasiswa:</strong> Mengadakan sesi informasi dan lokakarya mengenai berbagai peluang beasiswa, baik dari dalam maupun luar negeri.</li>
-                            <li><strong>Pengembangan Proposal Riset:</strong> Memberikan bimbingan dalam menyusun proposal penelitian yang berkualitas untuk aplikasi pascasarjana.</li>
-                            <li><strong>Jaringan Alumni dan Dosen:</strong> Membangun koneksi dengan alumni yang sukses di jenjang pascasarjana dan dosen yang memiliki jaringan luas di komunitas akademik.</li>
-                        </ol>
+                            <h3 class="heading-level-3">Dukungan Pendidikan Lanjutan:</h3>
+                            <ol class="article-list-custom">
+                                <li><strong>Konsultasi Akademik:</strong> Menyediakan layanan konsultasi individu untuk
+                                    perencanaan studi lanjutan, pemilihan universitas, dan persyaratan masuk.</li>
+                                <li><strong>Informasi Beasiswa:</strong> Mengadakan sesi informasi dan lokakarya
+                                    mengenai berbagai peluang beasiswa, baik dari dalam maupun luar negeri.</li>
+                                <li><strong>Pengembangan Proposal Riset:</strong> Memberikan bimbingan dalam menyusun
+                                    proposal penelitian yang berkualitas untuk aplikasi pascasarjana.</li>
+                                <li><strong>Jaringan Alumni dan Dosen:</strong> Membangun koneksi dengan alumni yang
+                                    sukses di jenjang pascasarjana dan dosen yang memiliki jaringan luas di komunitas
+                                    akademik.</li>
+                            </ol>
 
-                        <div class="theme-callout theme-callout-success">
-                            <strong>Jejak Langkah Lulusan:</strong> Banyak lulusan kami berhasil melanjutkan studi di universitas ternama di Indonesia, Asia, dan Eropa, seringkali dengan dukungan beasiswa penuh.
-                        </div>
+                            <div class="theme-callout theme-callout-success">
+                                <strong>Jejak Langkah Lulusan:</strong> Banyak lulusan kami berhasil melanjutkan studi
+                                di universitas ternama di Indonesia, Asia, dan Eropa, seringkali dengan dukungan
+                                beasiswa penuh.
+                            </div>
 
-                        <h2 class="heading-level-2 mt-5">3. Membantu Siswa Menumbuhkan Jiwa Wirausaha</h2>
-                        <p>Fakultas Ilmu Komputer dan Desain berdedikasi untuk menanamkan dan mengembangkan jiwa kewirausahaan pada setiap mahasiswa. Kami percaya bahwa semangat inovasi dan keberanian mengambil risiko adalah kunci untuk menciptakan solusi baru dan membuka peluang ekonomi. Kami menyediakan ekosistem yang mendukung pertumbuhan ide-ide bisnis sejak dini.</p>
+                            <h2 class="heading-level-2 mt-5">3. Membantu Siswa Menumbuhkan Jiwa Wirausaha</h2>
+                            <p>Fakultas Ilmu Komputer dan Desain berdedikasi untuk menanamkan dan mengembangkan jiwa
+                                kewirausahaan pada setiap mahasiswa. Kami percaya bahwa semangat inovasi dan keberanian
+                                mengambil risiko adalah kunci untuk menciptakan solusi baru dan membuka peluang ekonomi.
+                                Kami menyediakan ekosistem yang mendukung pertumbuhan ide-ide bisnis sejak dini.</p>
 
-                        <h3 class="heading-level-3">Inisiatif Kewirausahaan Kami:</h3>
-                        <ul class="article-list">
-                            <li><strong>Program Inkubasi Startup:</strong> Menyediakan program inkubasi yang komprehensif, mulai dari validasi ide, pengembangan prototipe, hingga strategi pemasaran.</li>
-                            <li><strong>Mentoring dari Praktisi:</strong> Menghubungkan mahasiswa dengan mentor berpengalaman dari dunia startup dan bisnis.</li>
-                            <li><strong>Akses Pendanaan Awal:</strong> Memfasilitasi mahasiswa untuk mengikuti kompetisi bisnis dan terhubung dengan investor atau program akselerator.</li>
-                            <li><strong>Workshop Kreativitas dan Inovasi:</strong> Mengadakan pelatihan rutin untuk mendorong pemikiran lateral dan solusi disruptif.</li>
-                        </ul>
+                            <h3 class="heading-level-3">Inisiatif Kewirausahaan Kami:</h3>
+                            <ul class="article-list">
+                                <li><strong>Program Inkubasi Startup:</strong> Menyediakan program inkubasi yang
+                                    komprehensif, mulai dari validasi ide, pengembangan prototipe, hingga strategi
+                                    pemasaran.</li>
+                                <li><strong>Mentoring dari Praktisi:</strong> Menghubungkan mahasiswa dengan mentor
+                                    berpengalaman dari dunia startup dan bisnis.</li>
+                                <li><strong>Akses Pendanaan Awal:</strong> Memfasilitasi mahasiswa untuk mengikuti
+                                    kompetisi bisnis dan terhubung dengan investor atau program akselerator.</li>
+                                <li><strong>Workshop Kreativitas dan Inovasi:</strong> Mengadakan pelatihan rutin untuk
+                                    mendorong pemikiran lateral dan solusi disruptif.</li>
+                            </ul>
 
-                        <div class="theme-callout theme-callout-warning">
-                            <strong>Bangun Bisnis Impian Anda:</strong> Wirausaha adalah perjalanan yang membutuhkan ketekunan. Kami siap mendukung Anda di setiap tahap untuk mewujudkan ide menjadi kenyataan.
-                        </div>
+                            <div class="theme-callout theme-callout-warning">
+                                <strong>Bangun Bisnis Impian Anda:</strong> Wirausaha adalah perjalanan yang membutuhkan
+                                ketekunan. Kami siap mendukung Anda di setiap tahap untuk mewujudkan ide menjadi
+                                kenyataan.
+                            </div>
 
-                        <h2 class="heading-level-2 mt-5">4. Membantu Siswa Siap Memasuki Lapangan Kerja</h2>
-                        <p>Selain membekali dengan keterampilan, misi kami juga mencakup memastikan setiap mahasiswa memiliki kesiapan mental dan profesional yang optimal untuk memasuki dunia kerja. Ini berarti tidak hanya memiliki kemampuan teknis, tetapi juga memahami dinamika pasar kerja, mampu membangun jaringan, dan tampil percaya diri di hadapan rekruter.</p>
+                            <h2 class="heading-level-2 mt-5">4. Membantu Siswa Siap Memasuki Lapangan Kerja</h2>
+                            <p>Selain membekali dengan keterampilan, misi kami juga mencakup memastikan setiap mahasiswa
+                                memiliki kesiapan mental dan profesional yang optimal untuk memasuki dunia kerja. Ini
+                                berarti tidak hanya memiliki kemampuan teknis, tetapi juga memahami dinamika pasar
+                                kerja, mampu membangun jaringan, dan tampil percaya diri di hadapan rekruter.</p>
 
-                        <h3 class="heading-level-3">Program Kesiapan Karir:</h3>
-                        <ol class="article-list-custom">
-                            <li><strong>Simulasi Wawancara:</strong> Mengadakan sesi wawancara tiruan dengan umpan balik konstruktif untuk meningkatkan kepercayaan diri mahasiswa.</li>
-                            <li><strong>Lokakarya Penyusunan CV & Portofolio:</strong> Membantu mahasiswa membuat resume dan portofolio yang menarik dan profesional.</li>
-                            <li><strong>Career Day & Job Fair:</strong> Menyelenggarakan acara rutin yang mempertemukan mahasiswa dengan berbagai perusahaan pencari bakat.</li>
-                            <li><strong>Pembentukan Jaringan Profesional:</strong> Mendorong mahasiswa untuk terlibat dalam acara industri dan membangun koneksi dengan calon pemberi kerja.</li>
-                        </ol>
+                            <h3 class="heading-level-3">Program Kesiapan Karir:</h3>
+                            <ol class="article-list-custom">
+                                <li><strong>Simulasi Wawancara:</strong> Mengadakan sesi wawancara tiruan dengan umpan
+                                    balik konstruktif untuk meningkatkan kepercayaan diri mahasiswa.</li>
+                                <li><strong>Lokakarya Penyusunan CV & Portofolio:</strong> Membantu mahasiswa membuat
+                                    resume dan portofolio yang menarik dan profesional.</li>
+                                <li><strong>Career Day & Job Fair:</strong> Menyelenggarakan acara rutin yang
+                                    mempertemukan mahasiswa dengan berbagai perusahaan pencari bakat.</li>
+                                <li><strong>Pembentukan Jaringan Profesional:</strong> Mendorong mahasiswa untuk
+                                    terlibat dalam acara industri dan membangun koneksi dengan calon pemberi kerja.</li>
+                            </ol>
 
-                        <div class="theme-callout theme-callout-danger">
-                            <strong>Bersaing di Era Digital:</strong> Pasar kerja semakin kompetitif. Kesiapan menyeluruh adalah kunci untuk menonjol dan meraih peluang terbaik.
-                        </div>
+                            <div class="theme-callout theme-callout-danger">
+                                <strong>Bersaing di Era Digital:</strong> Pasar kerja semakin kompetitif. Kesiapan
+                                menyeluruh adalah kunci untuk menonjol dan meraih peluang terbaik.
+                            </div>
 
-                        <p>Melalui implementasi misi-misi ini, Fakultas Ilmu Komputer dan Desain bertekad untuk mencetak lulusan yang tidak hanya unggul di bidang akademik, tetapi juga siap menjadi agen perubahan, pemimpin masa depan, dan kontributor yang berarti bagi kemajuan teknologi dan perekonomian bangsa. Komitmen kami adalah untuk terus berinovasi demi masa depan cerah para mahasiswa kami.</p>
+                            <p>Melalui implementasi misi-misi ini, Fakultas Ilmu Komputer dan Desain bertekad untuk
+                                mencetak lulusan yang tidak hanya unggul di bidang akademik, tetapi juga siap menjadi
+                                agen perubahan, pemimpin masa depan, dan kontributor yang berarti bagi kemajuan
+                                teknologi dan perekonomian bangsa. Komitmen kami adalah untuk terus berinovasi demi masa
+                                depan cerah para mahasiswa kami.</p>
 
-                    </article></section></div><div class="col-lg-4 col-xl-3 order-lg-first mt-5 mt-lg-0">
-                <div class="side-bar pt-5 pt-lg-0 sticky">
-                    <h3 class="side-bar-heading mb-3">Profil</h3>
-                    <nav class="side-bar-nav">
-                        <ul class="sidebar-nav-items list-unstyled flex-column">
-                            <li class="nav-item"><a href="<?= base_url('home/visi')?>">Visi</a></li>
-                            <li class="nav-item active"><a href="<?= base_url('home/misi')?>">Misi</a></li>
-                        </ul>
-                    </nav>
-                </div></div></div></div></div>```
+                        </article>
+                    </section>
+                </div>
+                <div class="col-lg-4 col-xl-3 order-lg-first mt-5 mt-lg-0">
+                    <div class="side-bar pt-5 pt-lg-0 sticky">
+                        <h3 class="side-bar-heading mb-3">Profil</h3>
+                        <nav class="side-bar-nav">
+                            <ul class="sidebar-nav-items list-unstyled flex-column">
+                                <li class="nav-item"><a href="<?= base_url('home/visi')?>">Visi</a></li>
+                                <li class="nav-item active"><a href="<?= base_url('home/misi')?>">Misi</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>```
 
     <a href="https://wa.me/6281283532881"
         class="btn btn-success btn-lg rounded-circle shadow position-fixed d-flex justify-content-center align-items-center"
