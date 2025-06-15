@@ -80,8 +80,17 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex bd-highlight">
                         <h6 class="flex-grow-1 bd-highlight">Data Lamaran </h6>
-                        <a href="<?= base_url('Lowongan/exportExcel') ?>" class="btn btn-success bd-highlight">Export
-                            Excel</a>
+                        <?php
+                        // Tentukan URL untuk export berdasarkan ada atau tidaknya lowongan_id
+                        if (isset($lowongan_id) && $lowongan_id !== null) {
+                            // Jika ada ID lowongan, arahkan ke fungsi export by lowongan
+                            $exportUrl = base_url('Perusahaan/exportExcelByLowongan/' . $lowongan_id);
+                        } else {
+                            // Jika tidak ada, arahkan ke fungsi export semua lamaran
+                            $exportUrl = base_url('Perusahaan/exportExcelLamaran');
+                        }
+                        ?>
+                        <a href="<?= $exportUrl ?>" class="btn btn-success bd-highlight">Export Excel</a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">

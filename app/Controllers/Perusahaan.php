@@ -8,6 +8,8 @@ use App\Models\LowonganModel;
 use App\Models\PenggunaModel;
 use App\Models\PerusahaanModel;
 use App\Models\LamaranModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Perusahaan extends BaseController
 {
@@ -220,24 +222,149 @@ public function hapusLowongan($id)
     }
 }
 
+// app/Controllers/Perusahaan.php
 public function semuaLamaran()
 {
-    // Ambil ID perusahaan dari session
     $idPerusahaan = session()->get('id_perusahaan');
 
     $lamaranModel = new LamaranModel();
     $data['lamaran'] = $lamaranModel->getLamaranAll($idPerusahaan);
+    $data['lowongan_id'] = null;
 
     return view('Perusahaan/lamaran', $data);
 }
 
+    public function exportExcelLamaran()
+    {
+        // Ambil ID perusahaan dari session
+        $idPerusahaan = session()->get('id_perusahaan');
+        $lamaranModel = new LamaranModel();
+        $dataLamaran = $lamaranModel->getLamaranAll($idPerusahaan);
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Menulis Judul (Header) Tabel
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Judul Lowongan');
+        $sheet->setCellValue('C1', 'Tipe Pekerjaan');
+        $sheet->setCellValue('D1', 'Nama Pelamar');
+        $sheet->setCellValue('E1', 'Pendidikan');
+        $sheet->setCellValue('F1', 'Keahlian');
+        $sheet->setCellValue('G1', 'Pengalaman Kerja');
+        $sheet->setCellValue('H1', 'Status');
+        $sheet->setCellValue('I1', 'Tanggal Lamaran');
+
+        // Menulis Data ke Setiap Baris
+        $column = 2; // Baris awal untuk data
+        foreach ($dataLamaran as $key => $data) {
+            $sheet->setCellValue('A' . $column, $key + 1);
+            $sheet->setCellValue('B' . $column, $data['judul']);
+            $sheet->setCellValue('C' . $column, $data['tipe_pekerjaan']);
+            $sheet->setCellValue('D' . $column, $data['nama']);
+            $sheet->setCellValue('E' . $column, $data['pendidikan']);
+            $sheet->setCellValue('F' . $column, $data['keahlian']);
+            $sheet->setCellValue('G' . $column, $data['pengalaman_kerja']);
+            $sheet->setCellValue('H' . $column, $data['status']);
+            $sheet->setCellValue('I' . $column, $data['tanggal_lamaran']);
+            $column++;
+        }
+
+        // Mengatur Style
+        $styleArray = [
+            'font' => [
+                'bold' => true,
+            ],
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+            ],
+        ];
+        $sheet->getStyle('A1:I1')->applyFromArray($styleArray);
+
+        // Mengatur Auto-size untuk setiap kolom
+        foreach (range('A', 'I') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Menulis file ke output
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Lamaran.xlsx';
+
+        // Mengatur header untuk download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $fileName . '"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit();
+    }
 
 public function lihatLamaran($lowongan_id)
 {
     $lamaranModel = new LamaranModel();
     $data['lamaran'] = $lamaranModel->getLamaranByLowongan($lowongan_id);
+    $data['lowongan_id'] = $lowongan_id;
 
     return view('Perusahaan/lamaran', $data);
+}
+
+public function exportExcelByLowongan($lowongan_id)
+{
+    $lamaranModel = new LamaranModel();
+    // Mengambil data lamaran berdasarkan ID lowongan
+    $dataLamaran = $lamaranModel->getLamaranByLowongan($lowongan_id); 
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Menulis Judul (Header) Tabel
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'Judul Lowongan');
+    $sheet->setCellValue('C1', 'Tipe Pekerjaan');
+    $sheet->setCellValue('D1', 'Nama Pelamar');
+    $sheet->setCellValue('E1', 'Pendidikan');
+    $sheet->setCellValue('F1', 'Keahlian');
+    $sheet->setCellValue('G1', 'Pengalaman Kerja');
+    $sheet->setCellValue('H1', 'Status');
+    $sheet->setCellValue('I1', 'Tanggal Lamaran');
+
+    // Menulis Data ke Setiap Baris
+    $column = 2;
+    foreach ($dataLamaran as $key => $data) {
+        $sheet->setCellValue('A' . $column, $key + 1);
+        $sheet->setCellValue('B' . $column, $data['judul']);
+        $sheet->setCellValue('C' . $column, $data['tipe_pekerjaan']);
+        $sheet->setCellValue('D' . $column, $data['nama']);
+        $sheet->setCellValue('E' . $column, $data['pendidikan']);
+        $sheet->setCellValue('F' . $column, $data['keahlian']);
+        $sheet->setCellValue('G' . $column, $data['pengalaman_kerja']);
+        $sheet->setCellValue('H' . $column, $data['status']);
+        $sheet->setCellValue('I' . $column, $data['tanggal_lamaran']);
+        $column++;
+    }
+
+    // (Opsi) Ambil judul lowongan untuk nama file
+    $judulLowongan = !empty($dataLamaran) ? $dataLamaran[0]['judul'] : 'Lowongan';
+    $fileName = 'Data Lamaran - ' . $judulLowongan . '.xlsx';
+    
+    // Mengatur Style, Auto-size, dan Header (sama seperti fungsi sebelumnya)
+    $styleArray = [
+        'font' => ['bold' => true],
+        'alignment' => ['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+    ];
+    $sheet->getStyle('A1:I1')->applyFromArray($styleArray);
+    foreach (range('A', 'I') as $col) {
+        $sheet->getColumnDimension($col)->setAutoSize(true);
+    }
+    
+    $writer = new Xlsx($spreadsheet);
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $fileName . '"');
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit();
 }
 
 public function terimaLamaran($id)
